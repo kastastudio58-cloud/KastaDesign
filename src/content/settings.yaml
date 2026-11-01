@@ -1,0 +1,35 @@
+directLinks:
+  - label:
+      ru: Электронная почта
+      en: Email
+    url: mailto:kastadesigncall@gmail.com
+  - label:
+      ru: Telegram
+      en: Telegram
+    url: https://t.me/KastaDesign
+  - label:
+      ru: Instagram
+      en: Instagram
+    url: https://instagram.com/kasta.design
+  - label:
+      ru: WhatsApp
+      en: WhatsApp
+    url: https://wa.me/79003187698
+socialLinks:
+  - label:
+      ru: Behance
+      en: Behance
+    url: https://www.behance.net/ekateristulmik
+  - label:
+      ru: Pinterest
+      en: Pinterest
+    url: https://pin.it/2dbi76FlZ
+  - label:
+      ru: Threads
+      en: Threads
+    url: https://www.threads.com/@kasta.design
+  - label:
+      ru: Linkedin
+      en: LinkedIn
+    url: https://www.linkedin.com/in/екатерина-стульникова-5489a2405/
+metrikaId: ''

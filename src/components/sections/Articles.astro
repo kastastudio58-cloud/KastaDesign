@@ -1,0 +1,43 @@
+---
+import AccentTitle from '../ui/AccentTitle.astro';
+import Media from '../ui/Media.astro';
+import Icon from '../ui/Icon.astro';
+import { tr, typo, type Lang } from '../../lib/content';
+import { useUi, localePath, sectionIds } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  content: any;
+  articles: { slug: string; entry: any }[];
+}
+
+const { lang, content, articles } = Astro.props;
+const t = useUi(lang);
+const title = (entry: any) => (lang === 'en' && entry.titleEn ? entry.titleEn : entry.title);
+---
+<section class="section articles" id={sectionIds.articles}>
+  <div class="container">
+    <AccentTitle class="h2 section-title articles__title" text={tr(content.title, lang)} accent={tr(content.titleAccent, lang)} />
+    <ul class="articles__list">
+      {
+        articles.map(({ slug, entry }, i) => (
+          <li class="articles__item" style="display: contents">
+            <a class="article-card outline-card" href={localePath(lang, `/articles/${slug}/`)} data-reveal style={`--reveal-delay: ${i * 0.08}s`}>
+              <Media src={entry.cover} alt="" lang={lang} class="article-card__image" />
+              <div class="article-card__body">
+                <h3 class="h4 article-card__title">{typo(title(entry))}</h3>
+                <p class="text article-card__text">{typo(tr(entry.excerpt, lang))}</p>
+              </div>
+              <div class="article-card__footer">
+                <span class="icon-button icon-button--dark" aria-hidden="true">
+                  <Icon name="arrow-up-right" />
+                </span>
+                <span class="visually-hidden">{t.readArticle}</span>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

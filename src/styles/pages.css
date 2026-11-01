@@ -1,0 +1,335 @@
+/* =========================================================
+   PROJECT (страница проекта — по макету «вид карточки внутри»)
+   ========================================================= */
+.project__window {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(360px, 29.2vw, 560px);
+  gap: clamp(24px, 2.083vw, 40px);
+  align-items: start;
+}
+
+.gallery {
+  position: sticky;
+  top: calc(var(--header-h) + var(--section-y));
+  aspect-ratio: 1 / 1;
+  max-height: calc(100svh - var(--header-h) - 2 * var(--section-y));
+  width: 100%;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  background: var(--c-lines);
+}
+
+.gallery__track {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery__slide {
+  position: relative;
+  flex: 0 0 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+/* Размытая подложка из того же фото: работа целиком видна и не обрезается */
+.gallery__slide::before {
+  content: '';
+  position: absolute;
+  inset: -40px;
+  background: var(--bg, none) center / cover no-repeat;
+  filter: blur(36px) saturate(1.1);
+  opacity: 0.55;
+}
+
+.gallery__slide img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gallery__empty {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery__nav {
+  position: absolute;
+  inset: 50% clamp(12px, 1.25vw, 24px) auto;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.gallery__nav .icon-button {
+  pointer-events: auto;
+  box-shadow: 0 4px 16px rgba(51, 34, 30, 0.12);
+}
+
+.gallery__pagination {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(12px, 1.25vw, 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  transform: translateX(-50%);
+  background: rgba(246, 245, 241, 0.85);
+  border-radius: 100px;
+  backdrop-filter: blur(6px);
+}
+
+.gallery__dots {
+  display: flex;
+  gap: 8px;
+}
+
+.gallery__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(51, 34, 30, 0.25);
+  transition: background-color 0.25s var(--ease);
+}
+
+.gallery__dot.is-active {
+  background: var(--c-blue);
+}
+
+.project__info {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 1.458vw, 28px);
+  padding-block: clamp(4px, 0.833vw, 16px);
+}
+
+.project__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.project__tag {
+  padding: 6px 16px;
+  border-radius: 100px;
+  box-shadow: inset 0 0 0 1.5px var(--c-blue);
+  color: var(--c-blue);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+}
+
+.project__section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project__section--divided {
+  padding-top: clamp(20px, 1.458vw, 28px);
+  border-top: 1px solid var(--c-lines);
+}
+
+.project__label {
+  color: var(--c-brown-60);
+}
+
+.project__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project__list li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.project__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-blue);
+}
+
+.project__price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.project__price-usd {
+  font-size: clamp(30px, 1vw + 26px, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.project__cta {
+  width: 100%;
+}
+
+.project__more {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project__others {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.project__other {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project__other-image {
+  aspect-ratio: 179 / 110;
+  border-radius: 12px;
+}
+
+.project__other-image img {
+  transition: transform 0.5s var(--ease);
+}
+
+@media (hover: hover) {
+  .project__other:hover .project__other-image img {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 1024px) {
+  .project__window {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    position: relative;
+    top: 0;
+    aspect-ratio: 4 / 3;
+    max-height: none;
+  }
+
+  .project__info {
+    max-width: 760px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    aspect-ratio: 1 / 1;
+  }
+
+  .gallery__nav {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .project__others {
+    display: flex;
+    margin-inline: calc(-1 * var(--margin));
+    padding-inline: var(--margin);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--margin);
+    scrollbar-width: none;
+  }
+
+  .project__others li {
+    flex: 0 0 44%;
+    scroll-snap-align: start;
+  }
+}
+
+/* =========================================================
+   Простые страницы: статья, политика, 404
+   ========================================================= */
+.page__inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 1.667vw, 32px);
+  max-width: calc(900px + 2 * var(--margin));
+  padding-block: clamp(16px, 2.083vw, 40px) clamp(32px, 4.167vw, 80px);
+}
+
+.page__inner--center {
+  align-items: flex-start;
+  min-height: 50vh;
+  justify-content: center;
+}
+
+.page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  color: var(--c-brown-60);
+  transition: color 0.2s var(--ease);
+}
+
+.page__back svg {
+  width: 18px;
+  height: auto;
+}
+
+.page__back:hover {
+  color: var(--c-brown);
+}
+
+.page__meta {
+  color: var(--c-brown-60);
+  margin-top: -8px;
+}
+
+.page__cover {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-m);
+}
+
+.page__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+}
+
+.page__section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page__soon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: var(--card-pad);
+}
+
+.page__code {
+  font-size: clamp(64px, 8vw, 140px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--c-blue);
+}

@@ -1,0 +1,174 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from './ui/Button.astro';
+import Media from './ui/Media.astro';
+import Icon from './ui/Icon.astro';
+import { tr, typo, formatNumber, projectTitle, getProjects, type Lang } from '../lib/content';
+import { useUi, localePath, sectionIds } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  slug: string;
+}
+
+const { lang, slug } = Astro.props;
+const t = useUi(lang);
+const projects = await getProjects();
+const current = projects.find((p) => p.slug === slug)!;
+const p = current.entry;
+const title = projectTitle(p, lang);
+const home = localePath(lang, '/');
+
+const gallery = (p.gallery ?? []).filter((g: any) => g.image);
+const slides = gallery.length ? gallery : [{ image: p.cover ?? null, alt: { ru: title, en: title } }];
+const others = [
+  ...projects.filter((x) => x.slug !== slug && x.entry.group === p.group),
+  ...projects.filter((x) => x.slug !== slug && x.entry.group !== p.group),
+].slice(0, 3);
+
+const task = tr(p.task, lang);
+const done = (p.done ?? []).map((d: any) => tr(d, lang)).filter(Boolean);
+const duration = tr(p.duration, lang);
+const tag = tr(p.tag, lang);
+const hasPrice = p.priceUsd != null;
+---
+<Base lang={lang} path={`/projects/${slug}/`} title={title} description={tr(p.summary, lang)} image={p.cover}>
+  <section class="section project">
+    <div class="container project__window">
+      <div class="project__gallery gallery" data-gallery aria-roledescription="carousel" aria-label={title}>
+        <div class="gallery__track" data-gallery-track tabindex="0">
+          {
+            slides.map((s: any, i: number) => (
+              <figure class="gallery__slide" style={s.image ? `--bg: url('${s.image}')` : undefined} aria-label={`${i + 1} / ${slides.length}`}>
+                {s.image ? (
+                  <img src={s.image} alt={tr(s.alt, lang) || title} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+                ) : (
+                  <Media lang={lang} class="gallery__empty" />
+                )}
+              </figure>
+            ))
+          }
+        </div>
+        {
+          slides.length > 1 && (
+            <>
+              <div class="gallery__nav">
+                <button class="icon-button icon-button--light gallery__prev" type="button" aria-label={t.galleryPrev} data-gallery-prev>
+                  <Icon name="chevron-left" />
+                </button>
+                <button class="icon-button icon-button--light gallery__next" type="button" aria-label={t.galleryNext} data-gallery-next>
+                  <Icon name="chevron-right" />
+                </button>
+              </div>
+              <div class="gallery__pagination" aria-hidden="true">
+                <span class="text-s gallery__counter" data-gallery-counter>1 / {slides.length}</span>
+                {slides.length <= 12 && (
+                  <span class="gallery__dots">
+                    {slides.map((_: unknown, i: number) => <span class:list={['gallery__dot', { 'is-active': i === 0 }]} />)}
+                  </span>
+                )}
+              </div>
+            </>
+          )
+        }
+      </div>
+
+      <div class="project__info">
+        <div class="project__top">
+          {tag ? <span class="project__tag">{tag}</span> : <span />}
+          <a class="icon-button icon-button--outline project__close" href={`${home}#${sectionIds.portfolio}`} aria-label={t.backToPortfolio}>
+            <Icon name="close" />
+          </a>
+        </div>
+        <h1 class="h2 project__title">{title}</h1>
+
+        {task && (
+          <div class="project__section">
+            <p class="text-s project__label">{t.task}</p>
+            <p class="text">{typo(task)}</p>
+          </div>
+        )}
+
+        {done.length > 0 && (
+          <div class="project__section">
+            <p class="text-s project__label">{t.done}</p>
+            <ul class="project__list">
+              {done.map((d: string) => <li class="text">{typo(d)}</li>)}
+            </ul>
+          </div>
+        )}
+
+        {!task && done.length === 0 && tr(p.summary, lang) && (
+          <div class="project__section">
+            <p class="text">{typo(tr(p.summary, lang))}</p>
+          </div>
+        )}
+
+        {duration && (
+          <div class="project__section project__section--divided">
+            <p class="text-s project__label">{t.duration}</p>
+            <p class="h5">{duration}</p>
+          </div>
+        )}
+
+        {hasPrice && (
+          <div class="project__section project__section--divided">
+            <p class="text-s project__label">{t.priceLabel}</p>
+            <p class="project__price">
+              <span class="project__price-usd">{lang === 'ru' ? `${formatNumber(p.priceUsd)} $` : `$${p.priceUsd.toLocaleString('en-US')}`}</span>
+              {lang === 'ru' && p.priceRub != null && <span class="h5 accent">{`${formatNumber(p.priceRub)} ₽`}</span>}
+            </p>
+            <p class="text-s project__label pre-line">{t.priceNote}</p>
+          </div>
+        )}
+
+        <Button href={`${home}#${sectionIds.contacts}`} variant="dark" class="project__cta">{t.wantSame}</Button>
+
+        {others.length > 0 && (
+          <div class="project__more">
+            <p class="h5">{t.otherProjects}</p>
+            <ul class="project__others">
+              {others.map(({ slug: s, entry }) => (
+                <li>
+                  <a class="project__other" href={localePath(lang, `/projects/${s}/`)}>
+                    <Media src={entry.cover} alt="" lang={lang} class="project__other-image" />
+                    <span class="text-s">{projectTitle(entry, lang)}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gallery) => {
+    const track = gallery.querySelector<HTMLElement>('[data-gallery-track]');
+    const counter = gallery.querySelector<HTMLElement>('[data-gallery-counter]');
+    const dots = gallery.querySelectorAll<HTMLElement>('.gallery__dot');
+    if (!track) return;
+    const total = track.children.length;
+
+    const index = () => Math.round(track.scrollLeft / track.clientWidth);
+    const go = (i: number) => {
+      const next = (i + total) % total;
+      track.scrollTo({ left: next * track.clientWidth, behavior: 'smooth' });
+    };
+    const update = () => {
+      const i = index();
+      if (counter) counter.textContent = `${i + 1} / ${total}`;
+      dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+    };
+
+    gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => go(index() - 1));
+    gallery.querySelector('[data-gallery-next]')?.addEventListener('click', () => go(index() + 1));
+    track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(index() - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(index() + 1); }
+    });
+  });
+</script>

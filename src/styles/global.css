@@ -1,0 +1,360 @@
+/*
+ * Токены из макета Figma (фрейм 1920, сетка 6 колонок / поля 40 / гаттер 20).
+ * Размеры заданы через clamp(): максимум = значение из макета на 1920,
+ * минимум — комфортный размер для телефона.
+ */
+:root {
+  --c-light: #f6f5f1;
+  --c-brown: #33221e;
+  --c-blue: #7690b1;
+  --c-blue-20: #e4e9f0;
+  --c-brown-60: #8a7b76;
+  --c-lines: #e6e2dc;
+  --c-blue-hover: #6582a7;
+  --c-brown-hover: #4a3631;
+  --c-bubble: #212c39;
+  --c-bubble-time: #7f91a3;
+
+  --font-sans: 'Manrope Variable', 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Lora', Georgia, serif;
+
+  /* Типографика: каждый уровень масштабируется отдельно */
+  --fs-h1: clamp(34px, 2.6vw + 30px, 80px);
+  --fs-h2: clamp(32px, 2.6vw + 22px, 72px);
+  --fs-h3: clamp(26px, 1.25vw + 20px, 44px);
+  --fs-h4: clamp(21px, 0.6vw + 20.5px, 32px);
+  --fs-h5: clamp(18px, 0.45vw + 17.4px, 26px);
+  --fs-text-l: clamp(17px, 0.6vw + 16.5px, 28px);
+  --fs-text: clamp(16px, 0.35vw + 15.3px, 22px);
+  --fs-text-s: clamp(14px, 0.25vw + 13.2px, 18px);
+  --fs-caption: clamp(15px, 0.2vw + 14.2px, 18px);
+  --fs-button: clamp(16px, 0.25vw + 15.2px, 20px);
+  --fs-price: clamp(22px, 0.75vw + 21.6px, 36px);
+  --fs-accent: clamp(20px, 1vw + 20.8px, 40px);
+
+  /* Сетка и отступы */
+  --container-max: 1920px;
+  --margin: clamp(16px, 2.083vw, 40px);
+  --gutter: clamp(12px, 1.042vw, 20px);
+  --section-y: clamp(24px, 2.083vw, 40px);
+  --title-gap: clamp(24px, 2.083vw, 40px);
+  --radius-l: clamp(20px, 1.667vw, 32px);
+  --radius-m: clamp(16px, 1.25vw, 24px);
+  --radius-s: clamp(12px, 0.833vw, 16px);
+  --card-pad: clamp(20px, 1.667vw, 32px);
+  --panel-pad-y: clamp(32px, 4.167vw, 80px);
+  --panel-pad-x: clamp(20px, 3.333vw, 64px);
+  --header-h: clamp(64px, 5.625vw, 108px);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 8px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--c-light);
+  color: var(--c-brown);
+  font-family: var(--font-sans);
+  font-size: var(--fs-text);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+h1, h2, h3, h4, h5, p, ul, ol, figure, blockquote {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--margin);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+/* ---------- Типографика ---------- */
+.h1 {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.h3 {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.h4 {
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+}
+
+.h5 {
+  font-size: var(--fs-h5);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.text-l {
+  font-size: var(--fs-text-l);
+  line-height: 1.4;
+}
+
+.text {
+  font-size: var(--fs-text);
+  line-height: 1.4;
+}
+
+.text-s {
+  font-size: var(--fs-text-s);
+  line-height: 1.4;
+}
+
+.accent {
+  color: var(--c-blue);
+}
+
+.pre-line {
+  white-space: pre-line;
+}
+
+.section-title {
+  margin-bottom: var(--title-gap);
+  text-wrap: balance;
+}
+
+/* ---------- Кнопки ---------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: clamp(13px, 1.15vw, 22px) clamp(24px, 2.083vw, 40px);
+  border-radius: 100px;
+  font-size: var(--fs-button);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+
+.button svg {
+  width: clamp(20px, 1.25vw, 24px);
+  height: auto;
+  flex: none;
+}
+
+.button--dark {
+  background: var(--c-brown);
+  color: var(--c-light);
+}
+
+.button--outline {
+  box-shadow: inset 0 0 0 1.5px var(--c-brown);
+  color: var(--c-brown);
+}
+
+@media (hover: hover) {
+  .button--dark:hover {
+    background: var(--c-brown-hover);
+  }
+
+  .button--outline:hover {
+    background: var(--c-brown);
+    color: var(--c-light);
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Круглая кнопка-иконка */
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(48px, 3.333vw, 64px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  flex: none;
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.icon-button svg {
+  width: 44%;
+  height: auto;
+}
+
+.icon-button--dark {
+  background: var(--c-brown);
+  color: var(--c-light);
+}
+
+.icon-button--light {
+  background: var(--c-light);
+  color: var(--c-brown);
+}
+
+.icon-button--outline {
+  box-shadow: inset 0 0 0 1.5px var(--c-brown);
+  color: var(--c-brown);
+}
+
+@media (hover: hover) {
+  .icon-button--light:hover,
+  .icon-button--outline:hover {
+    background: var(--c-brown);
+    color: var(--c-light);
+  }
+}
+
+/* ---------- Изображения и заглушки ---------- */
+.media {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-lines);
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media--empty {
+  display: grid;
+  place-items: center;
+  color: var(--c-brown-60);
+}
+
+.media__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  font-size: var(--fs-text-s);
+  text-align: center;
+}
+
+.media__placeholder svg {
+  width: clamp(28px, 2.5vw, 44px);
+  height: auto;
+  opacity: 0.7;
+}
+
+/* На тёмном фоне заглушка полупрозрачная */
+.media--on-dark {
+  background: rgba(246, 245, 241, 0.08);
+  color: rgba(246, 245, 241, 0.55);
+}
+
+/* ---------- Карточка с обводкой ---------- */
+.outline-card {
+  border: 1px solid var(--c-brown);
+  border-radius: var(--radius-m);
+}
+
+/* ---------- Появление при прокрутке ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.8s var(--ease),
+      transform 0.8s var(--ease);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

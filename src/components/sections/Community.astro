@@ -1,0 +1,35 @@
+---
+import Media from '../ui/Media.astro';
+import { tr, typo, type Lang } from '../../lib/content';
+
+interface Props {
+  lang: Lang;
+  content: any;
+}
+
+const { lang, content } = Astro.props;
+---
+<section class="section community">
+  <div class="container">
+    <div class="community__header">
+      <h2 class="h2 community__title">{typo(tr(content.title, lang))}</h2>
+      <p class="text-l community__subtitle">{typo(tr(content.subtitle, lang))}</p>
+    </div>
+    <div class="community__content">
+      <div class="community__intro outline-card" data-reveal>
+        <p class="text-l community__text">{typo(tr(content.text, lang))}</p>
+        <Media src={content.image} alt="" lang={lang} class="community__image" />
+      </div>
+      <div class="community__grid">
+        {
+          content.cards.map((card: any, i: number) => (
+            <article class="info-card outline-card" data-reveal style={`--reveal-delay: ${(i + 1) * 0.06}s`}>
+              <h3 class="h4 info-card__title">{typo(tr(card.title, lang))}</h3>
+              <p class="text info-card__text">{typo(tr(card.text, lang))}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

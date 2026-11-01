@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from './ui/Button.astro';
+import Media from './ui/Media.astro';
+import Icon from './ui/Icon.astro';
+import { tr, typo, getArticles, type Lang } from '../lib/content';
+import { useUi, localePath, sectionIds } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  slug: string;
+}
+
+const { lang, slug } = Astro.props;
+const t = useUi(lang);
+const articles = await getArticles();
+const a = articles.find((x) => x.slug === slug)!.entry;
+const title = lang === 'en' && a.titleEn ? a.titleEn : a.title;
+const paragraphs = tr(a.body, lang)
+  .split(/\n\s*\n/)
+  .map((s) => s.trim())
+  .filter(Boolean);
+const home = localePath(lang, '/');
+---
+<Base lang={lang} path={`/articles/${slug}/`} title={title} description={tr(a.excerpt, lang)} image={a.cover}>
+  <article class="section page">
+    <div class="container page__inner">
+      <a class="page__back text-s" href={`${home}#${sectionIds.articles}`}>
+        <Icon name="chevron-left" />
+        {t.toHome}
+      </a>
+      <h1 class="h2 page__title">{typo(title)}</h1>
+      {a.cover && <Media src={a.cover} alt="" lang={lang} class="page__cover" eager />}
+      {
+        paragraphs.length ? (
+          <div class="page__body">
+            {paragraphs.map((p) => <p class="text">{typo(p)}</p>)}
+          </div>
+        ) : (
+          <div class="page__soon outline-card">
+            <p class="h4">{t.articleSoon}</p>
+            <p class="text">{t.articleSoonText}</p>
+            <Button href={home} variant="dark">{t.toHome}</Button>
+          </div>
+        )
+      }
+    </div>
+  </article>
+</Base>

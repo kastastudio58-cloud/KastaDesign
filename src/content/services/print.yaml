@@ -1,0 +1,12 @@
+name: Печатные материалы
+nameEn: Print materials
+description:
+  ru: |-
+      Каталоги, прайсы, открытки,
+      сертификаты и другие носители
+  en: |-
+      Catalogues, price lists, cards,
+      gift certificates and more
+priceUsd: 700
+priceRub: 70000
+order: 4

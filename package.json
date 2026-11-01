@@ -1,0 +1,29 @@
+{
+  "name": "kasta-design-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "7.1.2",
+    "@astrojs/vercel": "11.0.17",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@fontsource/lora": "5.3.0",
+    "@keystatic/astro": "6.0.0",
+    "@keystatic/core": "0.6.9",
+    "astro": "7.4.4",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "playwright-core": "1.64.1",
+    "typescript": "5.9.3"
+  }
+}

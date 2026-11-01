@@ -1,0 +1,32 @@
+title: My Lux
+titleEn: My Lux
+group: stage
+order: 1
+stageQuestion:
+  ru: Готовишься к открытию?
+  en: Getting ready to launch?
+type:
+  ru: Фирменный стиль
+  en: Brand identity
+tag:
+  ru: Бренд к открытию
+  en: Brand for launch
+summary:
+  ru: Единый фирменный стиль для пространства с магазином косметики и косметологическими услугами. Подготовила визуал и материалы, помогла с заказом пакетов и сопровождала проект до открытия.
+  en: A unified brand identity for a space combining a cosmetics store and beauty treatments. I prepared the visuals and materials, helped order the shopping bags and supported the project through opening.
+gallery: []
+task:
+  ru: Создать единый образ пространства с магазином косметики и косметологическими услугами. Подготовить бренд к открытию.
+  en: Create a unified look for a space with a cosmetics store and beauty treatments, and prepare the brand for opening.
+done:
+  - ru: Фирменный стиль и визуальная система
+    en: Brand identity and visual system
+  - ru: Макеты упаковки и печатных материалов
+    en: Packaging and print layouts
+  - ru: Подготовка к печати и сопровождение заказа
+    en: Prepress and production support
+duration:
+  ru: 3 недели
+  en: 3 weeks
+priceUsd: 320
+priceRub: 29500

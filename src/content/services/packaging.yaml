@@ -1,0 +1,12 @@
+name: Упаковка и этикетки
+nameEn: Packaging and labels
+description:
+  ru: |-
+      Для новых продуктов, лимитированных
+      коллекций или обновления оформления
+  en: |-
+      For new products, limited
+      collections or a design refresh
+priceUsd: 200
+priceRub: 20000
+order: 2

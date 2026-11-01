@@ -1,0 +1,17 @@
+---
+import { splitAccent, typo } from '../../lib/content';
+
+interface Props {
+  text: string;
+  accent?: string;
+  as?: 'h1' | 'h2' | 'h3';
+  class?: string;
+  id?: string;
+}
+
+const { text, accent = '', as: Tag = 'h2', class: className, id } = Astro.props;
+const parts = splitAccent(typo(text), typo(accent));
+---
+<Tag class={className} id={id}>
+  {parts.map((p) => (p.accent ? <span class="accent">{p.text}</span> : p.text))}
+</Tag>

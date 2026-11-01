@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from './sections/Hero.astro';
+import Cases from './sections/Cases.astro';
+import Services from './sections/Services.astro';
+import Process from './sections/Process.astro';
+import About from './sections/About.astro';
+import Reviews from './sections/Reviews.astro';
+import Community from './sections/Community.astro';
+import Articles from './sections/Articles.astro';
+import Contacts from './sections/Contacts.astro';
+import { getHome, getSettings, getProjects, getServices, getReviews, getArticles, type Lang } from '../lib/content';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const [home, settings, projects, services, reviews, articles] = await Promise.all([
+  getHome(),
+  getSettings(),
+  getProjects(),
+  getServices(),
+  getReviews(),
+  getArticles(),
+]);
+---
+<Base lang={lang} path="/" image={home.hero.image}>
+  <Hero lang={lang} hero={home.hero} />
+  <Cases lang={lang} content={home.cases} projects={projects} />
+  <Services lang={lang} content={home.services} services={services} />
+  <Process lang={lang} content={home.process} />
+  <About lang={lang} content={home.about} />
+  <Reviews lang={lang} content={home.reviews} reviews={reviews} />
+  <Community lang={lang} content={home.community} />
+  <Articles lang={lang} content={home.articles} articles={articles} />
+  <Contacts lang={lang} content={home.contacts} settings={settings} />
+</Base>

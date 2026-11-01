@@ -1,0 +1,67 @@
+---
+// ШАБЛОН политики конфиденциальности. Перед публикацией замените данные в [квадратных скобках]
+// и при возможности покажите текст юристу.
+import Base from '../layouts/Base.astro';
+import Icon from './ui/Icon.astro';
+import type { Lang } from '../lib/content';
+import { useUi, localePath } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useUi(lang);
+const email = 'kastadesigncall@gmail.com';
+
+const content = {
+  ru: {
+    updated: 'Редакция от [дата]',
+    sections: [
+      ['1. Общие положения', `Настоящая политика описывает, как [ФИО / наименование, ИНН] (далее — «Оператор») обрабатывает данные посетителей сайта Kasta Design. Пользуясь сайтом, вы соглашаетесь с этой политикой.`],
+      ['2. Какие данные собираются', 'Сайт не содержит форм и не собирает имя, телефон или адрес электронной почты. При посещении сайта с помощью сервиса Яндекс Метрика могут обрабатываться обезличенные технические данные: cookies, IP-адрес, сведения о браузере и устройстве, адреса посещённых страниц, время посещения.'],
+      ['3. Зачем это нужно', 'Данные используются только для статистики: чтобы понимать, сколько людей посещает сайт и какие разделы им интересны, и делать сайт удобнее.'],
+      ['4. Cookies', 'Cookies — небольшие файлы, которые сохраняются в браузере. Метрика подключается только после того, как вы нажмёте «Хорошо» в уведомлении о cookies. Отключить cookies можно в настройках браузера.'],
+      ['5. Передача третьим лицам', 'Данные обрабатываются сервисом Яндекс Метрика (ООО «Яндекс») по его правилам и не передаются другим лицам, кроме случаев, предусмотренных законом.'],
+      ['6. Хранение и защита', 'Оператор принимает организационные и технические меры для защиты данных. Статистические данные хранятся в сервисе Яндекс Метрика в течение срока, установленного сервисом.'],
+      ['7. Ваши права', `Вы можете запросить информацию об обработке ваших данных или потребовать её прекращения, написав на ${email}.`],
+      ['8. Контакты', `По всем вопросам, связанным с этой политикой: ${email}.`],
+    ],
+  },
+  en: {
+    updated: 'Version of [date]',
+    sections: [
+      ['1. General', `This policy explains how [full name / company, tax ID] (the "Operator") processes data of visitors to the Kasta Design website. By using the site, you agree to this policy.`],
+      ['2. What data is collected', "The site has no forms and does not collect your name, phone number or email. When you visit the site, Yandex Metrica may process anonymised technical data: cookies, IP address, browser and device information, pages visited and time of visit."],
+      ['3. Why it is needed', 'The data is used for statistics only: to understand how many people visit the site and which sections interest them, and to make the site better.'],
+      ['4. Cookies', 'Cookies are small files stored in your browser. Yandex Metrica is enabled only after you click "Got it" in the cookie notice. You can disable cookies in your browser settings.'],
+      ['5. Third parties', 'The data is processed by Yandex Metrica (Yandex LLC) under its own terms and is not shared with anyone else except where required by law.'],
+      ['6. Storage and security', 'The Operator takes organisational and technical measures to protect the data. Statistics are stored in Yandex Metrica for the period set by the service.'],
+      ['7. Your rights', `You can request information about how your data is processed or ask for processing to stop by writing to ${email}.`],
+      ['8. Contact', `For any questions about this policy: ${email}.`],
+    ],
+  },
+}[lang];
+---
+<Base lang={lang} path="/privacy/" title={t.privacy}>
+  <article class="section page">
+    <div class="container page__inner">
+      <a class="page__back text-s" href={localePath(lang, '/')}>
+        <Icon name="chevron-left" />
+        {t.toHome}
+      </a>
+      <h1 class="h2 page__title">{t.privacy}</h1>
+      <p class="text-s page__meta">{content.updated}</p>
+      <div class="page__body">
+        {
+          content.sections.map(([h, p]) => (
+            <section class="page__section">
+              <h2 class="h5">{h}</h2>
+              <p class="text">{p}</p>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </article>
+</Base>

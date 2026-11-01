@@ -1,0 +1,164 @@
+hero:
+  eyebrow:
+    ru: |-
+      Дизайн для брендов, созданных
+      женщинами для женщин
+    en: |-
+      Design for brands created
+      by women for women
+  slogan:
+    ru: '#by women, for women'
+    en: '#by women, for women'
+  title:
+    ru: Готовишься к открытию, обновляешь бренд или ищешь своего дизайнера?
+    en: Getting ready to launch, refreshing your brand or looking for your designer?
+  titleAccent:
+    ru: своего дизайнера?
+    en: your designer?
+  text:
+    ru: Помогаю подготовить бренд к запуску, обновить визуал действующего бизнеса или беру на себя дизайн на постоянной основе.
+    en: I help prepare a brand for launch, refresh the visuals of an existing business, or take care of design on an ongoing basis.
+  primaryButton:
+    ru: Обсудить проект
+    en: Discuss a project
+  secondaryButton:
+    ru: Посмотреть портфолио
+    en: View portfolio
+cases:
+  title:
+    ru: На каком этапе твоё дело?
+    en: What stage is your business at?
+  titleAccent:
+    ru: твоё дело?
+    en: your business at?
+services:
+  title:
+    ru: С чем ещё могу помочь
+    en: What else I can help with
+  note:
+    ru: '[ Стоимость и сроки рассчитываются индивидуально ]'
+    en: '[ Pricing and timelines are calculated individually ]'
+  button:
+    ru: Обсудить задачу
+    en: Discuss your task
+process:
+  title:
+    ru: Коротко о рабочем процессе
+    en: How we work, in short
+  steps:
+    - title:
+        ru: Знакомство с твоим проектом
+        en: Getting to know your project
+      text:
+        ru: Обсуждаем, что ты создаёшь или хочешь изменить, какие материалы нужны и к какой дате.
+        en: We discuss what you are creating or want to change, which materials you need and by when.
+    - title:
+        ru: Расчёт и согласование плана и стоимости
+        en: Estimating and agreeing on the plan and cost
+      text:
+        ru: Определяем объём задач, этапы и сроки. Фиксируем договорённости в договоре и смете.
+        en: We define the scope, stages and timeline, and record everything in a contract and estimate.
+    - title:
+        ru: Разработка и доработка
+        en: Design and refinement
+      text:
+        ru: Показываю решения, объясняю, как они связаны с задачей твоего бренда. Обсуждаем и вносим согласованные доработки.
+        en: I present the solutions and explain how they serve your brand's goals. We discuss them and make the agreed revisions.
+    - title:
+        ru: Подготовка и передача файлов
+        en: Preparing and handing over files
+      text:
+        ru: Передаю готовые файлы и необходимые инструкции. Подготавливаю все закрывающие материалы.
+        en: I hand over the final files and any instructions you need, and prepare all closing documents.
+about:
+  title:
+    ru: Кстати, я Катя
+    en: By the way, I'm Katya
+  cards:
+    - title:
+        ru: Дизайн для девушек
+        en: Design for women
+      text:
+        ru: Бренд-дизайнер. Сейчас работаю с девушками, которые любят своё дело и через него помогают другим девушкам. Когда-то я сама была на их месте.
+        en: I'm a brand designer. I work with women who love what they do and help other women through it. I was once in their shoes myself.
+    - title:
+        ru: Из бьюти — в дизайн
+        en: From beauty to design
+      text:
+        ru: До дизайна я 8 лет работала мастером ногтевого сервиса и была сооснователь­ницей студии красоты. Сама оформляла прайсы, визитки и сертификаты. Мне это нравилось, но я не знала, как делать профессионально. Затем я узнала о профессии графического дизайнера, пошла учиться и после года совмещения окончательно сменила сферу.
+        en: Before design, I spent 8 years as a nail technician and co-founded a beauty studio. I made our price lists, business cards and gift certificates myself. I loved it but didn't know how to do it professionally. Then I discovered graphic design, went to study, and after a year of combining both, switched careers for good.
+    - title:
+        ru: Опыт внутри бренда
+        en: Experience inside a brand
+      text:
+        ru: Двухлетний опыт работы в дизайн-отделе косметических брендов помог мне посмотреть на дизайн изнутри бизнеса с миллионными оборотами и понять, как он работает в системе бренда и помогает решать его задачи.
+        en: Two years in the design department of cosmetics brands let me see design from inside a business with a multimillion turnover and understand how it works within a brand system and helps solve its goals.
+reviews:
+  title:
+    ru: Отзывы
+    en: Reviews
+community:
+  title:
+    ru: Комьюнити womenboss
+    en: The womenboss community
+  subtitle:
+    ru: Развивать своё дело приятнее, когда рядом есть свои.
+    en: Growing your business is more enjoyable with your people around.
+  text:
+    ru: Закрытый чат только для моих клиенток — девушек, которые любят своё дело и понимают, каково это — создавать что-то своё.
+    en: A private chat just for my clients — women who love what they do and know what it's like to build something of their own.
+  cards:
+    - title:
+        ru: |-
+          Знакомства
+          и поддержка
+        en: |-
+          Connections
+          and support
+      text:
+        ru: Рассказывай о своём проекте, делись опытом и знакомься с другими предпринимательницами.
+        en: Share your project and experience, and meet other women entrepreneurs.
+    - title:
+        ru: |-
+          Идеи для
+          сотрудничества
+        en: |-
+          Ideas for
+          collaboration
+      text:
+        ru: Находи единомышленниц для коллабораций, совместных запусков и поддержки проектов друг друга.
+        en: Find like-minded women for collaborations, joint launches and supporting each other's projects.
+    - title:
+        ru: |-
+          Полезное
+          для твоего бренда
+        en: |-
+          Useful things
+          for your brand
+      text:
+        ru: Материалы и новости о дизайне, которые помогут в работе над своим делом.
+        en: Design materials and news that help you work on your business.
+    - title:
+        ru: |-
+          Предложения
+          для своих
+        en: |-
+          Offers
+          for members
+      text:
+        ru: Специальные условия и бонусы от меня для участниц комьюнити.
+        en: Special terms and bonuses from me for community members.
+articles:
+  title:
+    ru: Полезное для твоего дела
+    en: Useful for your business
+  titleAccent:
+    ru: твоего дела
+    en: your business
+contacts:
+  directTitle:
+    ru: Выбери удобный формат связи
+    en: Choose how to get in touch
+  socialTitle:
+    ru: Я в соцсетях
+    en: Find me online

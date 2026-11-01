@@ -1,0 +1,62 @@
+---
+import Button from './ui/Button.astro';
+import type { Lang } from '../lib/content';
+import { useUi, localePath } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  metrikaId: string;
+}
+
+const { lang, metrikaId } = Astro.props;
+const t = useUi(lang);
+---
+{
+  metrikaId && (
+    <div class="cookie" role="region" aria-label="Cookies" data-cookie data-metrika-id={metrikaId} hidden>
+      <p>
+        {t.cookieText} <a href={localePath(lang, '/privacy/')}>{t.cookieMore}</a>
+      </p>
+      <Button variant="dark" data-cookie-accept>{t.cookieAccept}</Button>
+    </div>
+  )
+}
+
+<script>
+  // Метрика подключается только после согласия с cookies
+  const KEY = 'kasta-cookie-consent';
+  const banner = document.querySelector<HTMLElement>('[data-cookie]');
+
+  const loadMetrika = (id: string) => {
+    const w = window as unknown as { ym?: (...args: unknown[]) => void } & Record<string, unknown>;
+    if (w.ym) return;
+    (function (m: any, e: Document, t: string, r: string, i: string) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+      m[i].l = Date.now();
+      const k = e.createElement(t) as HTMLScriptElement;
+      const a = e.getElementsByTagName(t)[0];
+      k.async = true;
+      k.src = r;
+      a.parentNode?.insertBefore(k, a);
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    w.ym?.(Number(id), 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true });
+  };
+
+  if (banner) {
+    const id = banner.dataset.metrikaId ?? '';
+    let accepted = false;
+    try {
+      accepted = localStorage.getItem(KEY) === '1';
+    } catch {}
+    if (accepted) loadMetrika(id);
+    else banner.hidden = false;
+
+    banner.querySelector('[data-cookie-accept]')?.addEventListener('click', () => {
+      try {
+        localStorage.setItem(KEY, '1');
+      } catch {}
+      banner.hidden = true;
+      loadMetrika(id);
+    });
+  }
+</script>

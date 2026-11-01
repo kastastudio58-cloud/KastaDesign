@@ -1,0 +1,12 @@
+name: Консультации и рабочие сессии
+nameEn: Consultations and work sessions
+description:
+  ru: |-
+      Разбор текущего визуала
+      и план дальнейших действий
+  en: |-
+      A review of your current visuals
+      and a plan for next steps
+priceUsd: 500
+priceRub: 50000
+order: 6

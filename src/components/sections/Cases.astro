@@ -1,0 +1,95 @@
+---
+import AccentTitle from '../ui/AccentTitle.astro';
+import Button from '../ui/Button.astro';
+import Media from '../ui/Media.astro';
+import { tr, typo, projectTitle, type Lang } from '../../lib/content';
+import { useUi, localePath, sectionIds } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  content: any;
+  projects: { slug: string; entry: any }[];
+}
+
+const { lang, content, projects } = Astro.props;
+const t = useUi(lang);
+const stage = projects.filter((p) => p.entry.group === 'stage');
+const works = projects.filter((p) => p.entry.group === 'work');
+const projectHref = (slug: string) => localePath(lang, `/projects/${slug}/`);
+---
+<section class="section cases" id={sectionIds.portfolio}>
+  <div class="container">
+    <AccentTitle class="h2 section-title cases__title" text={tr(content.title, lang)} accent={tr(content.titleAccent, lang)} />
+
+    <ul class="cases__list">
+      {
+        stage.map(({ slug, entry }, i) => (
+          <li class="case-card outline-card" data-reveal style={`--reveal-delay: ${i * 0.08}s`}>
+            <h3 class="h4 case-card__question">{typo(tr(entry.stageQuestion, lang))}</h3>
+            <Media src={entry.cover} alt={projectTitle(entry, lang)} lang={lang} class="case-card__image" />
+            <div class="case-card__body">
+              <p class="h3 case-card__title">{projectTitle(entry, lang)}</p>
+              <p class="text case-card__text">{typo(tr(entry.summary, lang))}</p>
+            </div>
+            <Button href={projectHref(slug)} variant="dark" class="case-card__button">{t.caseButton}</Button>
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      works.length > 0 && (
+        <>
+          <Button variant="outline" class="cases__more" aria-expanded="false" aria-controls="works" data-works-open>
+            {t.moreWorks}
+          </Button>
+
+          <div class="works" id="works" hidden data-works>
+            <p class="h5 works__label">{t.moreWorksLabel}</p>
+            <ul class="works__grid">
+              {works.map(({ slug, entry }) => (
+                <li class="work-card outline-card">
+                  <h3 class="h3 work-card__title">{projectTitle(entry, lang)}</h3>
+                  <Media src={entry.cover} alt={projectTitle(entry, lang)} lang={lang} class="work-card__image" />
+                  <div class="work-card__body">
+                    <p class="h5 work-card__type">{tr(entry.type, lang)}</p>
+                    <p class="text work-card__text">{typo(tr(entry.summary, lang))}</p>
+                  </div>
+                  <Button href={projectHref(slug)} variant="dark" class="work-card__button">{t.workButton}</Button>
+                </li>
+              ))}
+            </ul>
+            <div class="works__footer">
+              <Button variant="outline" icon="arrow-up" class="works__collapse" data-works-close>
+                {t.collapseWorks}
+              </Button>
+            </div>
+          </div>
+        </>
+      )
+    }
+  </div>
+</section>
+
+<script>
+  const openBtn = document.querySelector<HTMLButtonElement>('[data-works-open]');
+  const closeBtn = document.querySelector<HTMLButtonElement>('[data-works-close]');
+  const works = document.querySelector<HTMLElement>('[data-works]');
+
+  openBtn?.addEventListener('click', () => {
+    if (!works) return;
+    works.hidden = false;
+    openBtn.hidden = true;
+    openBtn.setAttribute('aria-expanded', 'true');
+    works.querySelector<HTMLElement>('a, button')?.focus({ preventScroll: true });
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    if (!works || !openBtn) return;
+    works.hidden = true;
+    openBtn.hidden = false;
+    openBtn.setAttribute('aria-expanded', 'false');
+    openBtn.focus({ preventScroll: true });
+    document.getElementById('portfolio')?.scrollIntoView({ block: 'start' });
+  });
+</script>

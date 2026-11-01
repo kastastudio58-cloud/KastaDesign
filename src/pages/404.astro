@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/ui/Button.astro';
+import { useUi } from '../i18n/ui';
+
+const t = useUi('ru');
+---
+<Base lang="ru" path="/404/" title={t.notFoundTitle}>
+  <section class="section page">
+    <div class="container page__inner page__inner--center">
+      <p class="page__code">404</p>
+      <h1 class="h2 page__title">{t.notFoundTitle}</h1>
+      <p class="text-l">{t.notFoundText}</p>
+      <Button href="/" variant="dark">{t.toHome}</Button>
+    </div>
+  </section>
+</Base>

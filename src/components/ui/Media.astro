@@ -1,0 +1,42 @@
+---
+import Icon from './Icon.astro';
+import type { Lang } from '../../lib/content';
+import { useUi } from '../../i18n/ui';
+
+interface Props {
+  src?: string | null;
+  alt?: string;
+  lang: Lang;
+  class?: string;
+  /** object-position для кадрирования, например "50% 25%" */
+  position?: string;
+  onDark?: boolean;
+  eager?: boolean;
+  sizes?: string;
+  [key: string]: unknown;
+}
+
+const { src, alt = '', lang, class: className, position, onDark = false, eager = false, sizes: _sizes, ...rest } = Astro.props;
+const t = useUi(lang);
+---
+{
+  src ? (
+    <div class:list={['media', className]} {...rest}>
+      <img
+        src={src}
+        alt={alt}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchpriority={eager ? 'high' : undefined}
+        style={position ? `object-position: ${position}` : undefined}
+      />
+    </div>
+  ) : (
+    <div class:list={['media', 'media--empty', { 'media--on-dark': onDark }, className]} role="img" aria-label={alt || t.photoSoon} {...rest}>
+      <span class="media__placeholder">
+        <Icon name="image" />
+        <span>{t.photoSoon}</span>
+      </span>
+    </div>
+  )
+}

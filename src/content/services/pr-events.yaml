@@ -1,0 +1,12 @@
+name: PR-рассылки и мероприятия
+nameEn: PR mailers and events
+description:
+  ru: |-
+      Визуальное оформление наборов,
+      приглашений и материалов для событий
+  en: |-
+      Visual design for PR boxes,
+      invitations and event materials
+priceUsd: 600
+priceRub: 60000
+order: 5

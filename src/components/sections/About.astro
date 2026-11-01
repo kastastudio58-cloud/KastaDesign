@@ -1,0 +1,28 @@
+---
+import Media from '../ui/Media.astro';
+import { tr, typo, type Lang } from '../../lib/content';
+import { sectionIds } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  content: any;
+}
+
+const { lang, content } = Astro.props;
+---
+<section class="section about" id={sectionIds.about}>
+  <div class="container">
+    <h2 class="h2 section-title about__title">{typo(tr(content.title, lang))}</h2>
+    <div class="about__grid">
+      <Media src={content.photo} alt={lang === 'ru' ? 'Катя' : 'Katya'} lang={lang} class="about__photo" data-reveal />
+      {
+        content.cards.map((card: any, i: number) => (
+          <article class="info-card outline-card" data-reveal style={`--reveal-delay: ${(i + 1) * 0.08}s`}>
+            <h3 class="h4 info-card__title">{typo(tr(card.title, lang))}</h3>
+            <p class="text info-card__text">{typo(tr(card.text, lang))}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+---
+import AccentTitle from '../ui/AccentTitle.astro';
+import Button from '../ui/Button.astro';
+import Media from '../ui/Media.astro';
+import { tr, typo, type Lang } from '../../lib/content';
+import { sectionIds } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  hero: any;
+}
+
+const { lang, hero } = Astro.props;
+---
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__content" data-reveal>
+      <div class="hero__top">
+        <p class="hero__eyebrow pre-line">{typo(tr(hero.eyebrow, lang))}</p>
+        <p class="hero__slogan">{tr(hero.slogan, lang)}</p>
+      </div>
+      <div class="hero__main">
+        <AccentTitle as="h1" class="h1 hero__title" text={tr(hero.title, lang)} accent={tr(hero.titleAccent, lang)} />
+        <p class="text-l hero__text">{typo(tr(hero.text, lang))}</p>
+      </div>
+      <div class="hero__actions">
+        <Button href={`#${sectionIds.contacts}`} variant="dark" class="hero__button hero__button--primary">{tr(hero.primaryButton, lang)}</Button>
+        <Button href={`#${sectionIds.portfolio}`} variant="outline" class="hero__button hero__button--secondary">{tr(hero.secondaryButton, lang)}</Button>
+      </div>
+    </div>
+    <Media src={hero.image} alt={lang === 'ru' ? 'Катя, бренд-дизайнер Kasta Design' : 'Katya, brand designer at Kasta Design'} lang={lang} class="hero__media" eager data-reveal />
+  </div>
+</section>

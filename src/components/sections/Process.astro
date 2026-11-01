@@ -1,0 +1,37 @@
+---
+import Media from '../ui/Media.astro';
+import { tr, typo, type Lang } from '../../lib/content';
+
+interface Props {
+  lang: Lang;
+  content: any;
+}
+
+const { lang, content } = Astro.props;
+---
+<section class="section process">
+  <div class="container">
+    <div class="process__inner">
+      <h2 class="h2 process__title">{typo(tr(content.title, lang))}</h2>
+      <ol class="process__steps">
+        {
+          content.steps.map((step: any, i: number) => (
+            <li class="step" data-reveal style={`--reveal-delay: ${i * 0.1}s`}>
+              <div class="step__visual">
+                <Media src={step.image} alt="" lang={lang} onDark />
+              </div>
+              <div class="step__marker" aria-hidden="true">
+                <span class="step__dot" />
+                <span class="step__line" />
+              </div>
+              <div class="step__content">
+                <h3 class="h5 step__title">{typo(tr(step.title, lang))}</h3>
+                <p class="text-s step__text">{typo(tr(step.text, lang))}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>

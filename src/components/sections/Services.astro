@@ -1,0 +1,47 @@
+---
+import Button from '../ui/Button.astro';
+import { tr, typo, formatNumber, type Lang } from '../../lib/content';
+import { useUi, sectionIds } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  content: any;
+  services: { slug: string; entry: any }[];
+}
+
+const { lang, content, services } = Astro.props;
+const t = useUi(lang);
+const usd = (n: number) => (lang === 'ru' ? `${t.from} ${formatNumber(n)} $` : `${t.from} $${n.toLocaleString('en-US')}`);
+---
+<section class="section services" id={sectionIds.services}>
+  <div class="container">
+    <h2 class="h2 section-title services__title">{typo(tr(content.title, lang))}</h2>
+
+    <div class="services__table" role="table" aria-label={tr(content.title, lang)}>
+      <div class="services__head" role="row">
+        <span class="h5" role="columnheader">{t.tableService}</span>
+        <span class="h5" role="columnheader">{t.tableDescription}</span>
+        <span class="h5" role="columnheader">{t.tablePrice}</span>
+      </div>
+      {
+        services.map(({ entry }) => (
+          <div class="service-row" role="row" data-reveal>
+            <p class="h4 service-row__name" role="cell">{typo(lang === 'en' && entry.nameEn ? entry.nameEn : entry.name)}</p>
+            <p class="text service-row__text" role="cell">{typo(tr(entry.description, lang))}</p>
+            <div class="service-row__price" role="cell">
+              {entry.priceUsd != null && <span class="service-row__usd">{usd(entry.priceUsd)}</span>}
+              {lang === 'ru' && entry.priceRub != null && (
+                <span class="text-s service-row__rub">{`${t.from} ${formatNumber(entry.priceRub)} ₽`}</span>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="services__footer">
+      <p class="h5 services__note">{tr(content.note, lang)}</p>
+      <Button href={`#${sectionIds.contacts}`} variant="dark" class="services__button">{tr(content.button, lang)}</Button>
+    </div>
+  </div>
+</section>

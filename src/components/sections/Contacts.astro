@@ -1,0 +1,48 @@
+---
+import Icon from '../ui/Icon.astro';
+import { tr, type Lang } from '../../lib/content';
+import { useUi, sectionIds } from '../../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  content: any;
+  settings: any;
+}
+
+const { lang, content, settings } = Astro.props;
+const t = useUi(lang);
+const cards = [
+  { title: tr(content.directTitle, lang), links: settings.directLinks },
+  { title: tr(content.socialTitle, lang), links: settings.socialLinks },
+];
+const isExternal = (url: string) => /^https?:/.test(url);
+---
+<section class="section contacts" id={sectionIds.contacts} aria-labelledby="contacts-heading">
+  <div class="container">
+    <h2 class="visually-hidden" id="contacts-heading">{t.contactsHeading}</h2>
+    <div class="contacts__grid">
+      {
+        cards.map((card, i) => (
+          <div class="contacts__card outline-card" data-reveal style={`--reveal-delay: ${i * 0.08}s`}>
+            <h3 class="h3 contacts__title">{card.title}</h3>
+            <ul class="contacts__links">
+              {card.links.map((l: any) => (
+                <li>
+                  <a
+                    class="contact-link"
+                    href={l.url}
+                    target={isExternal(l.url) ? '_blank' : undefined}
+                    rel={isExternal(l.url) ? 'noopener' : undefined}
+                  >
+                    <span class="h5 contact-link__label">{tr(l.label, lang)}</span>
+                    <Icon name="arrow-up-right" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

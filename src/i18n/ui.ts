@@ -1,0 +1,106 @@
+import type { Lang } from '../lib/content';
+
+export const ui = {
+  ru: {
+    siteTitle: 'Kasta Design — бренд-дизайн для женских брендов',
+    siteDescription:
+      'Бренд-дизайнер Катя Стульникова: фирменный стиль, упаковка, презентации и оформление соцсетей для брендов, созданных женщинами для женщин.',
+    nav: { portfolio: 'Портфолио', services: 'Услуги', reviews: 'Отзывы', about: 'Обо мне', articles: 'Полезное' },
+    headerCta: 'Обсудить проект',
+    menuOpen: 'Открыть меню',
+    menuClose: 'Закрыть меню',
+    langSwitch: 'EN',
+    langSwitchLabel: 'English version',
+    caseButton: 'Подробнее о проекте',
+    moreWorks: 'Ещё больше работ',
+    moreWorksLabel: '[ Ещё больше работ ]',
+    collapseWorks: 'Свернуть работы',
+    workButton: 'Перейти в проект',
+    tableService: 'Услуга',
+    tableDescription: 'Описание',
+    tablePrice: 'Стоимость',
+    from: 'от',
+    contactsHeading: 'Контакты',
+    task: 'Задача',
+    done: 'Что я сделала',
+    duration: 'Срок проекта',
+    priceLabel: '[Аналогичный объём сегодня — ориентировочно]',
+    priceNote: 'Стоимость зависит от состава задач.\nПроизводство рассчитывается отдельно.',
+    wantSame: 'Хочу так же',
+    otherProjects: 'Посмотри другие проекты',
+    backToPortfolio: 'Вернуться к портфолио',
+    galleryPrev: 'Предыдущее фото',
+    galleryNext: 'Следующее фото',
+    photoSoon: 'Фото скоро появится',
+    articleSoon: 'Статья скоро появится',
+    articleSoonText: 'Я уже работаю над этим материалом. А пока можно посмотреть другие разделы сайта.',
+    toHome: 'На главную',
+    readArticle: 'Читать статью',
+    privacy: 'Политика конфиденциальности',
+    cookieText: 'Сайт использует cookies и Яндекс Метрику, чтобы понимать, как им пользуются.',
+    cookieMore: 'Подробнее',
+    cookieAccept: 'Хорошо',
+    notFoundTitle: 'Страница не найдена',
+    notFoundText: 'Возможно, ссылка устарела. Начните с главной — там всё самое важное.',
+  },
+  en: {
+    siteTitle: 'Kasta Design — brand design for women-led brands',
+    siteDescription:
+      'Brand designer Katya Stulnikova: visual identity, packaging, presentations and social media design for brands created by women for women.',
+    nav: { portfolio: 'Portfolio', services: 'Services', reviews: 'Reviews', about: 'About', articles: 'Insights' },
+    headerCta: 'Discuss a project',
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu',
+    langSwitch: 'RU',
+    langSwitchLabel: 'Русская версия',
+    caseButton: 'View project',
+    moreWorks: 'More work',
+    moreWorksLabel: '[ More work ]',
+    collapseWorks: 'Show less',
+    workButton: 'Open project',
+    tableService: 'Service',
+    tableDescription: 'Description',
+    tablePrice: 'Price',
+    from: 'from',
+    contactsHeading: 'Contacts',
+    task: 'Brief',
+    done: 'What I did',
+    duration: 'Timeline',
+    priceLabel: '[Similar scope today — approximate]',
+    priceNote: 'The price depends on the scope of work.\nProduction is quoted separately.',
+    wantSame: 'I want this too',
+    otherProjects: 'See other projects',
+    backToPortfolio: 'Back to portfolio',
+    galleryPrev: 'Previous photo',
+    galleryNext: 'Next photo',
+    photoSoon: 'Photo coming soon',
+    articleSoon: 'Article coming soon',
+    articleSoonText: "I'm already working on this piece. In the meantime, take a look around the rest of the site.",
+    toHome: 'Back to home',
+    readArticle: 'Read article',
+    privacy: 'Privacy policy',
+    cookieText: 'This site uses cookies and Yandex Metrica to understand how it is used.',
+    cookieMore: 'Learn more',
+    cookieAccept: 'Got it',
+    notFoundTitle: 'Page not found',
+    notFoundText: 'The link may be out of date. Start from the home page — everything important is there.',
+  },
+} as const;
+
+export const useUi = (lang: Lang) => ui[lang];
+
+/** Адрес страницы на нужном языке: русская версия без префикса, английская — с /en */
+export const localePath = (lang: Lang, path = '/') => {
+  const clean = path.startsWith('/') ? path : `/${path}`;
+  if (lang === 'ru') return clean;
+  return clean === '/' ? '/en/' : `/en${clean}`;
+};
+
+export const sectionIds = {
+  portfolio: 'portfolio',
+  services: 'services',
+  reviews: 'reviews',
+  about: 'about',
+  articles: 'articles',
+  contacts: 'contacts',
+} as const;

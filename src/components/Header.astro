@@ -1,0 +1,83 @@
+---
+import Logo from './ui/Logo.astro';
+import Icon from './ui/Icon.astro';
+import Button from './ui/Button.astro';
+import type { Lang } from '../lib/content';
+import { useUi, localePath, sectionIds } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  altHref: string;
+}
+
+const { lang, altHref } = Astro.props;
+const t = useUi(lang);
+const home = localePath(lang, '/');
+const links = [
+  { href: `${home}#${sectionIds.portfolio}`, label: t.nav.portfolio },
+  { href: `${home}#${sectionIds.services}`, label: t.nav.services },
+  { href: `${home}#${sectionIds.reviews}`, label: t.nav.reviews },
+  { href: `${home}#${sectionIds.about}`, label: t.nav.about },
+  { href: `${home}#${sectionIds.articles}`, label: t.nav.articles },
+];
+const contactsHref = `${home}#${sectionIds.contacts}`;
+---
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a href={home} class="header__logo" aria-label="Kasta Design">
+      <Logo />
+    </a>
+    <nav class="header__nav" aria-label={lang === 'ru' ? 'Основное меню' : 'Main menu'}>
+      {links.map((l) => <a class="header__nav-link" href={l.href}>{l.label}</a>)}
+    </nav>
+    <div class="header__actions">
+      <a class="header__lang" href={altHref} hreflang={lang === 'ru' ? 'en' : 'ru'} aria-label={t.langSwitchLabel}>{t.langSwitch}</a>
+      <Button href={contactsHref} variant="dark" class="header__button">{t.headerCta}</Button>
+      <button
+        class="header__burger"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label={t.menuOpen}
+        data-label-open={t.menuOpen}
+        data-label-close={t.menuClose}
+        data-burger
+      >
+        <Icon name="menu" class="header__burger-open" />
+        <Icon name="close" class="header__burger-close" />
+      </button>
+    </div>
+  </div>
+</header>
+<div class="menu" id="mobile-menu" data-menu>
+  <nav class="menu__nav" aria-label={lang === 'ru' ? 'Мобильное меню' : 'Mobile menu'}>
+    {links.map((l) => <a class="menu__link" href={l.href} data-menu-link>{l.label}</a>)}
+  </nav>
+  <div class="menu__footer">
+    <Button href={contactsHref} variant="dark" data-menu-link>{t.headerCta}</Button>
+    <a class="menu__lang" href={altHref} hreflang={lang === 'ru' ? 'en' : 'ru'}>{t.langSwitchLabel}</a>
+  </div>
+</div>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+
+  const setOpen = (open: boolean) => {
+    if (!header || !burger) return;
+    header.toggleAttribute('data-menu-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', (open ? burger.dataset.labelClose : burger.dataset.labelOpen) ?? '');
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+  };
+
+  burger?.addEventListener('click', () => setOpen(!header?.hasAttribute('data-menu-open')));
+  menu?.querySelectorAll('[data-menu-link]').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+  window.matchMedia('(min-width: 1081px)').addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
+  });
+</script>
