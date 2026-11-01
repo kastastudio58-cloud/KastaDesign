@@ -1,4 +1,5 @@
 ---
+import SliderControls from '../ui/SliderControls.astro';
 import { tr, type Lang } from '../../lib/content';
 import { sectionIds } from '../../i18n/ui';
 
@@ -13,14 +14,14 @@ const columns = ['1', '2', '3'].map((c) => reviews.filter((r) => (r.entry.column
 ---
 <section class="section reviews" id={sectionIds.reviews}>
   <div class="container">
-    <div class="reviews__inner">
+    <div class="reviews__inner" data-slider>
       <h2 class="h2 reviews__title">{tr(content.title, lang)}</h2>
-      <div class="reviews__list">
+      <div class="reviews__list" data-slider-track>
         {
           columns.map((col, i) => (
             <div class="reviews__column" data-reveal style={`--reveal-delay: ${i * 0.08}s`}>
               {col.map(({ entry }) => (
-                <figure class="review">
+                <figure class="review" data-slide>
                   <blockquote class="text review__text">{tr(entry.text, lang)}</blockquote>
                   {entry.time && <figcaption class="text-s review__time">{entry.time}</figcaption>}
                 </figure>
@@ -29,6 +30,7 @@ const columns = ['1', '2', '3'].map((c) => reviews.filter((r) => (r.entry.column
           ))
         }
       </div>
+      <SliderControls lang={lang} variant="light" class="reviews__controls" />
     </div>
   </div>
 </section>

@@ -1,4 +1,5 @@
 ---
+import Signature from './ui/Signature.astro';
 import type { Lang } from '../lib/content';
 import { getSettings } from '../lib/content';
 import { useUi, localePath } from '../i18n/ui';
@@ -20,7 +21,7 @@ const year = new Date().getFullYear();
           settings.signature ? (
             <img src={settings.signature} alt="Kasta Design" loading="lazy" />
           ) : (
-            <span class="footer__signature-text" aria-label="Kasta Design">kd</span>
+            <Signature />
           )
         }
       </div>

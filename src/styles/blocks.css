@@ -833,29 +833,31 @@
   }
 }
 
-/* Телефон: горизонтальный скролл, следующий отзыв виден частично */
+.reviews__controls {
+  display: none;
+}
+
+/* Телефон: лента листается стрелками (и свайпом), следующий отзыв виден частично */
 @media (max-width: 640px) {
   .reviews__list {
+    position: relative;
     display: flex;
     columns: auto;
     gap: 12px;
     align-items: flex-start;
     margin-inline: calc(-1 * var(--panel-pad-x));
     padding-inline: var(--panel-pad-x);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: var(--panel-pad-x);
-    scrollbar-width: none;
-  }
-
-  .reviews__list::-webkit-scrollbar {
-    display: none;
+    overflow-x: hidden;
+    touch-action: pan-y;
   }
 
   .review {
     flex: 0 0 82%;
     margin-bottom: 0;
-    scroll-snap-align: start;
+  }
+
+  .reviews__controls {
+    display: flex;
   }
 }
 
@@ -984,26 +986,65 @@
   }
 }
 
-/* Второстепенный блок: на узких экранах — горизонтальный скролл */
+.articles__controls {
+  display: none;
+}
+
+/* Второстепенный блок: на узких экранах — лента, листается кнопками-стрелками */
 @media (max-width: 900px) {
   .articles__list {
+    position: relative;
     display: flex;
     gap: var(--gutter);
     margin-inline: calc(-1 * var(--margin));
     padding-inline: var(--margin);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: var(--margin);
-    scrollbar-width: none;
-  }
-
-  .articles__list::-webkit-scrollbar {
-    display: none;
+    overflow-x: hidden;
+    touch-action: pan-y;
   }
 
   .article-card {
     flex: 0 0 clamp(270px, 62vw, 420px);
-    scroll-snap-align: start;
+  }
+
+  .articles__controls {
+    display: flex;
+  }
+}
+
+/* =========================================================
+   SLIDER CONTROLS (кнопки листания отзывов и статей)
+   ========================================================= */
+.slider-controls {
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+[data-slider-static] .slider-controls {
+  display: none;
+}
+
+.slider-controls .icon-button {
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+
+.slider-controls .icon-button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.slider-controls .icon-button--light {
+  box-shadow: none;
+}
+
+@media (hover: hover) {
+  .slider-controls .icon-button:disabled:hover {
+    background: transparent;
+    color: var(--c-brown);
+  }
+
+  .slider-controls .icon-button--light:disabled:hover {
+    background: var(--c-light);
   }
 }
 
@@ -1084,18 +1125,10 @@
   width: clamp(200px, 24vw, 460px);
 }
 
-.footer__signature img {
+.footer__signature img,
+.footer__signature svg {
   width: 100%;
   height: auto;
-}
-
-.footer__signature-text {
-  display: block;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(96px, 10vw, 200px);
-  line-height: 1;
-  text-align: center;
 }
 
 .footer__divider {

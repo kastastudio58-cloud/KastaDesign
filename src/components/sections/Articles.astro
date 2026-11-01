@@ -2,6 +2,7 @@
 import AccentTitle from '../ui/AccentTitle.astro';
 import Media from '../ui/Media.astro';
 import Icon from '../ui/Icon.astro';
+import SliderControls from '../ui/SliderControls.astro';
 import { tr, typo, type Lang } from '../../lib/content';
 import { useUi, localePath, sectionIds } from '../../i18n/ui';
 
@@ -16,13 +17,13 @@ const t = useUi(lang);
 const title = (entry: any) => (lang === 'en' && entry.titleEn ? entry.titleEn : entry.title);
 ---
 <section class="section articles" id={sectionIds.articles}>
-  <div class="container">
+  <div class="container" data-slider>
     <AccentTitle class="h2 section-title articles__title" text={tr(content.title, lang)} accent={tr(content.titleAccent, lang)} />
-    <ul class="articles__list">
+    <ul class="articles__list" data-slider-track>
       {
         articles.map(({ slug, entry }, i) => (
           <li class="articles__item" style="display: contents">
-            <a class="article-card outline-card" href={localePath(lang, `/articles/${slug}/`)} data-reveal style={`--reveal-delay: ${i * 0.08}s`}>
+            <a class="article-card outline-card" href={localePath(lang, `/articles/${slug}/`)} data-slide data-reveal style={`--reveal-delay: ${i * 0.08}s`}>
               <Media src={entry.cover} alt="" lang={lang} class="article-card__image" />
               <div class="article-card__body">
                 <h3 class="h4 article-card__title">{typo(title(entry))}</h3>
@@ -39,5 +40,6 @@ const title = (entry: any) => (lang === 'en' && entry.titleEn ? entry.titleEn : 
         ))
       }
     </ul>
+    <SliderControls lang={lang} variant="outline" class="articles__controls" />
   </div>
 </section>

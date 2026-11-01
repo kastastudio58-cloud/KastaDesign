@@ -72,6 +72,9 @@ const ogImage = new URL(image || settings.ogImage || '/og-image.png', site).href
     <CookieBanner lang={lang} metrikaId={(settings.metrikaId || '').trim()} />
 
     <script>
+      import '../scripts/slider';
+    </script>
+    <script>
       // Плавное появление блоков при прокрутке
       const items = document.querySelectorAll<HTMLElement>('[data-reveal]');
       if ('IntersectionObserver' in window) {

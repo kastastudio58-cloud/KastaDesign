@@ -1,0 +1,21 @@
+---
+import Icon from './Icon.astro';
+import type { Lang } from '../../lib/content';
+
+interface Props {
+  lang: Lang;
+  variant?: 'light' | 'outline';
+  class?: string;
+}
+
+const { lang, variant = 'outline', class: className } = Astro.props;
+const label = lang === 'ru' ? { prev: 'Назад', next: 'Вперёд' } : { prev: 'Previous', next: 'Next' };
+---
+<div class:list={['slider-controls', className]}>
+  <button class={`icon-button icon-button--${variant}`} type="button" aria-label={label.prev} data-slider-prev>
+    <Icon name="chevron-left" />
+  </button>
+  <button class={`icon-button icon-button--${variant}`} type="button" aria-label={label.next} data-slider-next>
+    <Icon name="chevron-right" />
+  </button>
+</div>

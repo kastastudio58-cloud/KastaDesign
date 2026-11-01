@@ -218,7 +218,7 @@ export default config({
       schema: {
         directLinks: fields.array(link, { label: 'Формат связи', itemLabel: (p) => p.fields.label.fields.ru.value || 'Ссылка' }),
         socialLinks: fields.array(link, { label: 'Соцсети', itemLabel: (p) => p.fields.label.fields.ru.value || 'Ссылка' }),
-        signature: img('Подпись в футере (SVG или PNG)', 'brand', 'Если пусто — показывается временная текстовая подпись'),
+        signature: img('Подпись в футере (SVG или PNG)', 'brand', 'Если пусто — показывается встроенная подпись kd из брендбука'),
         ogImage: img('Картинка для превью в соцсетях (1200×630)', 'brand'),
         metrikaId: fields.text({ label: 'Номер счётчика Яндекс Метрики', description: 'Только цифры. Пока пусто — Метрика не подключается' }),
       },
