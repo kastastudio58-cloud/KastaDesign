@@ -9,6 +9,14 @@ interface Props {
 // Строки абзаца с «- » в начале складываются в список
 const { paras, class: className = 'text' } = Astro.props;
 
+// **текст** — жирный
+const rich = (text: string) =>
+  typo(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+
 type Block = { list: false; text: string } | { list: true; items: string[] };
 
 const blocks: Block[] = [];
@@ -40,10 +48,10 @@ for (const para of paras) {
   blocks.map((b) =>
     b.list ? (
       <ul class="project__list">
-        {b.items.map((x) => <li class="text">{typo(x)}</li>)}
+        {b.items.map((x) => <li class="text" set:html={rich(x)} />)}
       </ul>
     ) : (
-      <p class={className}>{typo(b.text)}</p>
+      <p class={className} set:html={rich(b.text)} />
     )
   )
 }
