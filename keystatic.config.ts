@@ -62,24 +62,51 @@ export default config({
         order: fields.integer({ label: 'Порядок', description: 'Меньше — выше', defaultValue: 10 }),
         stageQuestion: t('Вопрос над карточкой', { description: 'Только для блока «На каком этапе». Например: Готовишься к открытию?' }),
         type: t('Тип работы', { description: 'Для сетки работ. Например: Упаковка' }),
+        heading: t('Заголовок на странице проекта', { description: 'Если пусто, используется название проекта. Например: Про тело — от стратегии до внедрения' }),
         tag: t('Тег на странице проекта', { description: 'Например: Бренд к открытию' }),
         summary: t('Короткое описание для карточки', { multiline: true }),
         cover: img('Обложка карточки', 'projects'),
         gallery: fields.array(
           fields.object({
-            image: img('Фото', 'projects'),
+            image: img('Фото', 'projects', 'Формат 16:9 — 1920×1080 или 1176×661'),
             alt: t('Описание фото (для поисковиков и незрячих)'),
           }),
           { label: 'Галерея на странице проекта', description: 'Сколько угодно фото, порядок можно менять перетаскиванием', itemLabel: (p) => p.fields.alt.fields.ru.value || 'Фото' }
         ),
-        task: t('Задача', { multiline: true }),
+        intro: t('Вводный абзац под названием', { multiline: true, description: 'Пара предложений о проекте' }),
+        task: t('Задача', { multiline: true, description: 'Абзацы разделяйте пустой строкой. Строки, начинающиеся с «- », станут списком' }),
+        solution: fields.array(
+          fields.object({
+            title: t('Заголовок пункта', { description: 'Выделяется жирным. Например: Связала интерьер и фирменный стиль.' }),
+            text: t('Текст', { multiline: true, description: 'Абзацы разделяйте пустой строкой. Строки, начинающиеся с «- », станут списком' }),
+          }),
+          { label: 'Решение', itemLabel: (p) => p.fields.title.fields.ru.value || 'Пункт' }
+        ),
+        result: t('Результат', { multiline: true, description: 'Абзацы разделяйте пустой строкой. Строки, начинающиеся с «- », станут списком' }),
         done: fields.array(t('Пункт'), {
-          label: 'Что я сделала',
+          label: 'Что я сделала (короткий список)',
+          description: 'Показывается, только если блок «Решение» пустой',
           itemLabel: (p) => p.fields.ru.value || 'Пункт',
         }),
         duration: t('Срок проекта', { description: 'Например: 3 недели' }),
+        scope: fields.array(
+          fields.object({
+            title: t('Пункт', { description: 'Например: Фирменный стиль' }),
+            items: t('Подпункты', { multiline: true, description: 'Каждый с новой строки. Можно оставить пустым' }),
+          }),
+          { label: 'Объём работ', itemLabel: (p) => p.fields.title.fields.ru.value || 'Пункт' }
+        ),
+        priceTitle: t('Подпись к цене', { description: 'Необязательно. Например: Бренд-стратегия + брендбук' }),
         priceUsd: fields.integer({ label: 'Ориентировочная цена сегодня, $' }),
         priceRub: fields.integer({ label: 'Ориентировочная цена сегодня, ₽', description: 'Показывается только в русской версии' }),
+        extraPrices: fields.array(
+          fields.object({
+            title: t('Подпись', { description: 'Например: Сопровождение, в месяц' }),
+            usd: fields.integer({ label: 'Цена, $' }),
+            rub: fields.integer({ label: 'Цена, ₽', description: 'Показывается только в русской версии' }),
+          }),
+          { label: 'Дополнительные цены', description: 'Например, ежемесячное сопровождение', itemLabel: (p) => p.fields.title.fields.ru.value || 'Цена' }
+        ),
       },
     }),
     services: collection({

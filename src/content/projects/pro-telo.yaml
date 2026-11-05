@@ -6,19 +6,222 @@ stageQuestion:
   ru: Ищешь своего дизайнера?
   en: Looking for your designer?
 type:
-  ru: Бренд-платформа и фирменный стиль
-  en: Brand platform and identity
+  ru: Бренд-стратегия и фирменный стиль
+  en: Brand strategy and identity
+heading:
+  ru: Про тело — от стратегии до внедрения
+  en: Pro Telo — from strategy to rollout
 tag:
   ru: Постоянный дизайнер
   en: Ongoing designer
 summary:
   ru: 'Два месяца совместной работы: от ДНК и бренд-платформы до фирменного стиля, оформления ВКонтакте и помощи с публикациями.'
   en: Two months of working together, from brand DNA and platform to visual identity, VK page design and help with posts.
-gallery: []
+cover: /images/projects/pro-telo-cover.png
+gallery:
+  - image: /images/projects/pro-telo-01.png
+    alt:
+      ru: Логотип «Про {Тело}» на красном фоне
+      en: The Pro {Telo} logo on a red background
+  - image: /images/projects/pro-telo-02.png
+    alt:
+      ru: Основная версия логотипа со знаком и версия с фигурными скобками
+      en: Primary logo with the mark and the curly-brace version
+  - image: /images/projects/pro-telo-03.png
+    alt:
+      ru: Типографика бренда — стили текста
+      en: Brand typography — text styles
+  - image: /images/projects/pro-telo-04.png
+    alt:
+      ru: Светлая и красная карточки для соцсетей
+      en: Light and red social media cards
+  - image: /images/projects/pro-telo-05.png
+    alt:
+      ru: Ключевой принцип контента — сначала понимание, потом рекомендации
+      en: 'Key content principle: understanding first, recommendations second'
+  - image: /images/projects/pro-telo-06.png
+    alt:
+      ru: Рубрики контента
+      en: Content pillars
+  - image: /images/projects/pro-telo-07.png
+    alt:
+      ru: Оформление сообщества ВКонтакте
+      en: VK community page design
+  - image: /images/projects/pro-telo-08.png
+    alt:
+      ru: Публикации с рукописными стрелками и обводками
+      en: Posts with hand-drawn arrows and circles
+  - image: /images/projects/pro-telo-09.png
+    alt:
+      ru: Обложки актуальных историй
+      en: Story highlight covers
+  - image: /images/projects/pro-telo-10.png
+    alt:
+      ru: Лента публикаций после переупаковки
+      en: The post feed after the redesign
+  - image: /images/projects/pro-telo-11.png
+    alt:
+      ru: Визитка и подарочный сертификат
+      en: Business card and gift certificate
+intro:
+  ru: Бренд-стратегия, фирменный стиль и сопровождение переупаковки соцсетей для студии коррекции фигуры в Пензе.
+  en: Brand strategy, visual identity and ongoing design support for a social media redesign for a body-contouring studio in Penza, Russia.
 task:
-  ru: ''
-  en: ''
+  ru: |-
+    Заказчица пришла с логотипом, который создавался для старта и уже не отражал её подход. Студия выросла и расширялась, а единой системы бренда пока не было.
+
+    Нужно было сформулировать основу бренда, задать правила коммуникации для сотрудников и подрядчиков и упростить ведение соцсетей. Заказчице была нужна понятная инструкция, в которую можно заглянуть и понять, что говорить, как оформлять материалы и на что опираться в работе.
+  en: |-
+    The client came with a logo made for the studio's launch that no longer reflected her approach. The studio had grown and was expanding, but there was no unified brand system yet.
+
+    We needed to define the brand's foundation, set communication rules for staff and contractors, and make running social media easier. The client needed a clear guide she could open at any time to see what to say, how to design materials and what to rely on in her work.
+solution:
+  - title:
+      ru: Сформировала основу бренда.
+      en: Built the brand's foundation.
+    text:
+      ru: |-
+        Начала со стратегии: собрала ядро бренда, сформулировала большую идею, миссию и ценности, определила архетипы. Провела анализ целевой аудитории и на его основе разработала позиционирование и название.
+
+        В основу положила системный подход студии: внимание к взаимосвязи питания, образа жизни и состояния организма. Эта идея стала ориентиром для коммуникации и визуального стиля.
+      en: |-
+        I started with strategy: assembled the brand core, defined the big idea, mission and values, and chose the archetypes. I analysed the target audience and used it to develop the positioning and the name.
+
+        At the heart of it is the studio's systemic approach: attention to how nutrition, lifestyle and the body's condition are connected. This idea became the guide for both communication and visual style.
+  - title:
+      ru: Задала характер общения и направления контента.
+      en: Defined the tone of voice and content directions.
+    text:
+      ru: |-
+        Проработала персону бренда и тон общения: прямой, уверенный, с юмором и человеческим отношением. Важно было сохранить характер заказчицы и дать сотрудникам и подрядчикам понятные ориентиры, как говорить от лица студии.
+
+        Выделила рубрики для экспертных объяснений, знакомства с командой, рассказов о программах и результатах работы. Так появился каркас контента, чтобы публикации было проще планировать и связывать с задачами бренда.
+      en: |-
+        I developed the brand persona and tone of voice: direct, confident, with humour and a human touch. It was important to keep the client's own character and give staff and contractors clear guidance on how to speak for the studio.
+
+        I set out content pillars for expert explanations, meeting the team, stories about programmes and client results. This gave the content a framework, making posts easier to plan and tie to the brand's goals.
+  - title:
+      ru: Перевела стратегию в фирменный стиль.
+      en: Turned the strategy into a visual identity.
+    text:
+      ru: |-
+        Предложила две дизайн-концепции: более лёгкую и более яркую. В выбранном направлении соединила экспертность и системность с энергичным, душевным характером студии.
+
+        Для логотипа выбрала плотный гротеск без лишних украшений. Его вес и простота поддерживают прямую манеру общения: говорить понятно, уверенно и по существу. Фигурные скобки в версии «Про {Тело}» подчёркивают идею целого, которое складывается из взаимосвязанных составляющих.
+
+        В отдельном знаке соединила два противоположно направленных полукруга — образ баланса внешнего и внутреннего. Предусмотрела и компактную версию логотипа для небольших форматов.
+      en: |-
+        I proposed two design concepts: a lighter one and a bolder one. In the chosen direction I combined expertise and a systemic approach with the studio's energetic, warm character.
+
+        For the logo I chose a dense, unadorned grotesque. Its weight and simplicity support the direct way of speaking: clear, confident and to the point. The curly braces in the “Pro {Telo}” version underline the idea of a whole made up of interconnected parts.
+
+        For the standalone mark I joined two semicircles facing opposite ways — an image of balance between the outer and the inner. I also made a compact logo version for small formats.
+  - title:
+      ru: Выстроила палитру на сочетании силы и теплоты.
+      en: Built the palette on strength and warmth.
+    text:
+      ru: |-
+        Глубокий красный стал главным эмоциональным акцентом. Он поддерживает энергичный голос бренда и выделяет важные мысли, предложения и призывы к действию в соцсетях.
+
+        Уравновесила его молочным фоном и тёмным графитом. Светлый оттенок добавляет теплоту и оставляет пространство для информации и фотографий, а графит создаёт строгую основу для текста. Вместе цвета передают профессиональный характер студии и сохраняют ощущение человеческого общения.
+      en: |-
+        Deep red became the main emotional accent. It supports the brand's energetic voice and highlights key ideas, offers and calls to action on social media.
+
+        I balanced it with a milky background and dark graphite. The light shade adds warmth and leaves room for information and photos, while graphite gives text a strict base. Together the colours convey the studio's professionalism and keep the feeling of human conversation.
+  - title:
+      ru: Добавила графику, которая помогает объяснять.
+      en: Added graphics that help explain.
+    text:
+      ru: |-
+        Спокойную типографику дополнила рукописными стрелками, обводками и подчёркиваниями. Они выглядят так, будто специалист во время разговора отмечает главное и показывает связи.
+
+        Этот приём поддерживает образовательный контент: помогает последовательно раскрывать сложные темы и сохранять живую интонацию. Основной текст остаётся читаемым, а рукописные детали точечно направляют внимание.
+
+        Поскольку основной акцент был на ВКонтакте, сразу показала стиль на примере сообщества и публикаций. Светлые карточки стали основой для объяснений, красные — для акцентов, а единая типографика и графика связали разные форматы. Визуальное решение утвердили без правок.
+      en: |-
+        I paired calm typography with hand-drawn arrows, circles and underlines. They look as if a specialist were marking the key points and showing connections while talking.
+
+        This device supports the educational content: it helps unfold complex topics step by step and keeps the tone lively. The main text stays readable, while the hand-drawn details guide attention where it matters.
+
+        Since the main focus was VK, I showed the style straight away on the community page and posts. Light cards became the base for explanations, red ones for accents, and shared typography and graphics tied the different formats together. The visual direction was approved with no revisions.
+  - title:
+      ru: Собрала систему в брендбук.
+      en: Gathered the system into a brand book.
+    text:
+      ru: Объединила ДНК бренда, правила коммуникации и визуальную айдентику в одном документе. Заказчица получила общую точку опоры для повседневной работы и знакомства новых сотрудников и подрядчиков с брендом.
+      en: I brought the brand DNA, communication rules and visual identity together in one document. The client got a shared reference point for everyday work and for introducing new staff and contractors to the brand.
+  - title:
+      ru: Помогла внедрить изменения.
+      en: Helped roll out the changes.
+    text:
+      ru: |-
+        После утверждения продолжила работу со студией: в течение нескольких месяцев создавала макеты для переупаковки ВКонтакте и Instagram, помогала составлять посты-карусели.
+
+        Взяла на себя дизайн-сопровождение, чтобы обновление последовательно переходило в готовые материалы, а заказчица могла продолжать работу со своими клиентками.
+      en: |-
+        After approval I kept working with the studio: for several months I created layouts for the VK and Instagram redesign and helped put together carousel posts.
+
+        I took on ongoing design support so the update steadily turned into finished materials, while the client could keep working with her clients.
+result:
+  ru: |-
+    Студия получила единую систему — от позиционирования и правил общения до визуального оформления. Все основные ориентиры собраны в брендбуке, который можно использовать самой и передавать новым специалистам.
+
+    Работа продолжилась внедрением: я подготовила материалы для переупаковки соцсетей и сопровождала обновление в течение нескольких месяцев.
+  en: |-
+    The studio got a unified system — from positioning and communication rules to visual design. All the key guidelines are collected in a brand book the client can use herself and hand to new specialists.
+
+    The work continued with the rollout: I prepared materials for the social media redesign and supported the update for several months.
 done: []
 duration:
-  ru: ''
-  en: ''
+  ru: 5 недель + 2 месяца сопровождения
+  en: 5 weeks + 2 months of ongoing support
+scope:
+  - title:
+      ru: Бренд-стратегия
+      en: Brand strategy
+    items:
+      ru: |-
+        ДНК бренда — фундамент идентичности
+        большая идея: зачем существует бренд, кроме денег
+        нейминг
+        проработка ЦА
+        построение позиционирования под запросы ЦА
+        рубрикаторы для контента
+      en: |-
+        brand DNA — the foundation of the identity
+        big idea: why the brand exists beyond money
+        naming
+        target audience research
+        positioning built around the audience's needs
+        content pillars
+  - title:
+      ru: Визуальная айдентика
+      en: Visual identity
+    items:
+      ru: |-
+        логотип
+        подбор цветовой палитры
+        подбор шрифтов и типографических приёмов
+        графические приёмы
+      en: |-
+        logo
+        colour palette
+        typefaces and typographic devices
+        graphic devices
+  - title:
+      ru: Носители
+      en: Applications
+    items:
+      ru: полная переупаковка соцсетей (ВКонтакте и Instagram)
+      en: full social media redesign (VK and Instagram)
+priceTitle:
+  ru: Бренд-стратегия + брендбук
+  en: Brand strategy + brand book
+priceUsd: 1500
+priceRub: 120000
+extraPrices:
+  - title:
+      ru: Сопровождение, в месяц
+      en: Ongoing support, per month
+    usd: 500
+    rub: 45000

@@ -1,0 +1,109 @@
+---
+// Экран загрузки: коричневый фон и основной логотип с бликом (эффект ShinyText из React Bits на CSS).
+// Показывается при первом заходе в сессию, при переходах по сайту пропускается.
+---
+<div class="preloader" aria-hidden="true" data-preloader>
+  <div class="preloader__logo"></div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = 'kasta-preloader-seen';
+    var root = document.documentElement;
+    var el = document.querySelector('[data-preloader]');
+    if (!el) return;
+
+    var seen = false;
+    try {
+      seen = sessionStorage.getItem(KEY) === '1';
+    } catch (e) {}
+    if (seen) {
+      el.remove();
+      return;
+    }
+
+    root.classList.add('is-preloading');
+    var start = Date.now();
+    var MIN = 1200; // чтобы блик успел пройти хотя бы раз
+    var done = false;
+
+    var hide = function () {
+      if (done) return;
+      done = true;
+      try {
+        sessionStorage.setItem(KEY, '1');
+      } catch (e) {}
+      el.classList.add('is-hidden');
+      root.classList.remove('is-preloading');
+      setTimeout(function () {
+        el.remove();
+      }, 700);
+    };
+
+    var onLoad = function () {
+      setTimeout(hide, Math.max(0, MIN - (Date.now() - start)));
+    };
+    if (document.readyState === 'complete') onLoad();
+    else window.addEventListener('load', onLoad);
+    setTimeout(hide, 6000); // страховка, если какой-то ресурс завис
+  })();
+</script>
+
+<style>
+  .preloader {
+    display: none;
+  }
+
+  :global(html.js) .preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    background: var(--c-brown);
+    transition:
+      opacity 0.6s var(--ease),
+      visibility 0.6s;
+  }
+
+  .preloader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  :global(html.is-preloading) {
+    overflow: hidden;
+  }
+
+  .preloader__logo {
+    width: clamp(200px, 28vw, 440px);
+    aspect-ratio: 773 / 106;
+    /* Базовый цвет приглушённый, блик — светлый цвет бренда */
+    background: linear-gradient(
+      120deg,
+      var(--c-brown-60) 40%,
+      var(--c-light) 50%,
+      var(--c-brown-60) 60%
+    );
+    background-size: 200% 100%;
+    -webkit-mask: url('/images/brand/logo.svg') center / contain no-repeat;
+    mask: url('/images/brand/logo.svg') center / contain no-repeat;
+    animation: preloader-shine 2s linear infinite;
+  }
+
+  @keyframes preloader-shine {
+    from {
+      background-position: 150% 0;
+    }
+    to {
+      background-position: -50% 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .preloader__logo {
+      animation: none;
+      background: var(--c-light);
+    }
+  }
+</style>

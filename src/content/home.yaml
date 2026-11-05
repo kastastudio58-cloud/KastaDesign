@@ -46,25 +46,29 @@ process:
     ru: Коротко о рабочем процессе
     en: How we work, in short
   steps:
-    - title:
+    - image: /images/home/process-1.png
+      title:
         ru: Знакомство с твоим проектом
         en: Getting to know your project
       text:
         ru: Обсуждаем, что ты создаёшь или хочешь изменить, какие материалы нужны и к какой дате.
         en: We discuss what you are creating or want to change, which materials you need and by when.
-    - title:
+    - image: /images/home/process-2.png
+      title:
         ru: Расчёт и согласование плана и стоимости
         en: Estimating and agreeing on the plan and cost
       text:
         ru: Определяем объём задач, этапы и сроки. Фиксируем договорённости в договоре и смете.
         en: We define the scope, stages and timeline, and record everything in a contract and estimate.
-    - title:
+    - image: /images/home/process-3.png
+      title:
         ru: Разработка и доработка
         en: Design and refinement
       text:
         ru: Показываю решения, объясняю, как они связаны с задачей твоего бренда. Обсуждаем и вносим согласованные доработки.
         en: I present the solutions and explain how they serve your brand's goals. We discuss them and make the agreed revisions.
-    - title:
+    - image: /images/home/process-4.png
+      title:
         ru: Подготовка и передача файлов
         en: Preparing and handing over files
       text:
@@ -107,6 +111,7 @@ community:
   text:
     ru: Закрытый чат только для моих клиенток — девушек, которые любят своё дело и понимают, каково это — создавать что-то своё.
     en: A private chat just for my clients — women who love what they do and know what it's like to build something of their own.
+  image: /images/home/community.png
   cards:
     - title:
         ru: |-

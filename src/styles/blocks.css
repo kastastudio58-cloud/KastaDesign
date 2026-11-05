@@ -206,8 +206,7 @@
   flex: none;
   font-family: var(--font-serif);
   font-style: italic;
-  /* Привязан к ширине карточки, чтобы помещаться рядом с подзаголовком */
-  font-size: clamp(20px, 4.9cqi, 40px);
+  font-size: clamp(15px, 0.35vw + 13.3px, 20px);
   line-height: 1.1;
   color: var(--c-brown-60);
   text-align: right;
@@ -244,12 +243,6 @@
   object-position: 50% 25%;
 }
 
-@container (max-width: 720px) {
-  .hero__slogan {
-    font-size: clamp(20px, 3.9cqi, 40px);
-  }
-}
-
 /* Когда слоган не помещается рядом с подзаголовком, он уходит над заголовком */
 @container (max-width: 560px) {
   .hero__top {
@@ -258,7 +251,6 @@
   }
 
   .hero__slogan {
-    font-size: clamp(20px, 6.4cqi, 28px);
     text-align: left;
     white-space: normal;
   }
@@ -408,17 +400,20 @@
   margin-bottom: var(--title-gap);
 }
 
+/* Лента: видно 3 карточки (2 на планшете, 1 на телефоне), остальные — по стрелкам */
 .works__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  --works-per-view: 3;
+  display: flex;
   gap: var(--gutter);
+  overflow-x: hidden;
+  touch-action: pan-y;
 }
 
 .work-card {
-  display: grid;
-  grid-row: span 4;
-  grid-template-rows: subgrid;
-  row-gap: clamp(16px, 1.25vw, 24px);
+  flex: 0 0 calc((100% - (var(--works-per-view) - 1) * var(--gutter)) / var(--works-per-view));
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 1.25vw, 24px);
   padding: var(--card-pad);
 }
 
@@ -434,32 +429,57 @@
 }
 
 .work-card__button {
-  justify-self: start;
-  align-self: end;
+  align-self: flex-start;
+  margin-top: auto;
 }
 
+/* «Свернуть работы» слева, стрелки справа */
 .works__footer {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
   margin-top: var(--title-gap);
+}
+
+.works__collapse {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.works__controls {
+  display: flex;
+  grid-column: 2;
+  justify-self: end;
+  margin-top: 0;
 }
 
 @media (max-width: 1100px) {
   .works__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    --works-per-view: 2;
   }
 }
 
 @media (max-width: 640px) {
   .works__grid {
-    grid-template-columns: 1fr;
+    --works-per-view: 1;
   }
 
   .work-card__button {
     width: 100%;
   }
 
-  .works__footer .button {
+  .works__footer {
+    grid-template-columns: 1fr;
+  }
+
+  .works__controls {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .works__collapse {
+    grid-column: 1;
     width: 100%;
   }
 }

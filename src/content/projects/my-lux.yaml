@@ -14,19 +14,176 @@ tag:
 summary:
   ru: Единый фирменный стиль для пространства с магазином косметики и косметологическими услугами. Подготовила визуал и материалы, помогла с заказом пакетов и сопровождала проект до открытия.
   en: A unified brand identity for a space combining a cosmetics store and beauty treatments. I prepared the visuals and materials, helped order the shopping bags and supported the project through opening.
-gallery: []
+cover: /images/projects/my-lux-cover.png
+gallery:
+  - image: /images/projects/my-lux-01.png
+    alt:
+      ru: Логотип My Lux на коричневом фоне
+      en: My Lux logo on a brown background
+  - image: /images/projects/my-lux-02.png
+    alt:
+      ru: Полки бутика с брендовой косметикой
+      en: Boutique shelves with branded cosmetics
+  - image: /images/projects/my-lux-03.png
+    alt:
+      ru: Построение шрифтового логотипа My Lux
+      en: Construction of the My Lux wordmark
+  - image: /images/projects/my-lux-04.png
+    alt:
+      ru: Цветовая палитра фирменного стиля
+      en: Brand colour palette
+  - image: /images/projects/my-lux-05.png
+    alt:
+      ru: Фирменные пакеты My Lux на кассе
+      en: My Lux shopping bags at the checkout
+  - image: /images/projects/my-lux-06.png
+    alt:
+      ru: Дизайн пакета с бирочкой-сердцем
+      en: Shopping bag design with a heart tag
+  - image: /images/projects/my-lux-07.png
+    alt:
+      ru: Визитки со стирающимся слоем
+      en: Scratch-off business cards
+  - image: /images/projects/my-lux-08.png
+    alt:
+      ru: Табличка с режимом работы на дверь
+      en: Opening-hours door plate
+  - image: /images/projects/my-lux-09.png
+    alt:
+      ru: Фотозона с логотипом My Lux на открытии
+      en: Opening-day photo zone with the My Lux logo
+intro:
+  ru: Фирменный стиль и материалы для бьюти-бутика в Пензе (Россия), где объединились брендовая косметика, косметология и зона с напитками и десертами.
+  en: Brand identity and materials for a beauty boutique in Penza, Russia, bringing together branded cosmetics, beauty treatments and a drinks-and-desserts corner.
 task:
-  ru: Создать единый образ пространства с магазином косметики и косметологическими услугами. Подготовить бренд к открытию.
-  en: Create a unified look for a space with a cosmetics store and beauty treatments, and prepare the brand for opening.
-done:
-  - ru: Фирменный стиль и визуальная система
-    en: Brand identity and visual system
-  - ru: Макеты упаковки и печатных материалов
-    en: Packaging and print layouts
-  - ru: Подготовка к печати и сопровождение заказа
-    en: Prepress and production support
+  ru: |-
+    Подготовить визуальное оформление бутика к открытию:
+    - Связать фирменный стиль с уже готовым дизайном интерьера.
+    - Передать характер бренда: женственность, премиальность и внимательное отношение к каждой гостье.
+    - Подготовить материалы с учётом бюджета, сроков производства и требований к вывеске.
+  en: |-
+    Prepare the boutique's visual identity for opening:
+    - Connect the brand identity with the interior design that was already finished.
+    - Convey the brand's character: femininity, a premium feel and genuine care for every guest.
+    - Prepare the materials within the budget, production timelines and signage requirements.
+solution:
+  - title:
+      ru: Связала интерьер и фирменный стиль
+      en: Connected the interior and the brand identity
+    text:
+      ru: |-
+        Предложила два визуальных направления. Заказчица выбрала более мягкое и женственное: тёплую палитру, плавные линии логотипа и изящную типографику.
+
+        Разработала:
+        - Три версии логотипа для разных форматов.
+        - Цветовую палитру и шрифтовую пару.
+        - Графические приёмы и правила использования стиля.
+
+        Так вывеска, упаковка и небольшие печатные материалы складывались в единый узнаваемый образ.
+      en: |-
+        I proposed two visual directions. The client chose the softer, more feminine one: a warm palette, flowing logo lines and elegant typography.
+
+        I designed:
+        - Three logo versions for different formats.
+        - A colour palette and a typeface pairing.
+        - Graphic devices and usage guidelines.
+
+        This way the sign, packaging and small print pieces added up to one recognisable look.
+  - title:
+      ru: Подготовила материалы для работы бутика
+      en: Prepared the materials for running the boutique
+    text:
+      ru: |-
+        Для пространства и торговой зоны:
+        - Вывеску с учётом требований жилого комплекса.
+        - Табличку с режимом работы.
+        - Фирменные пакеты и стаканчики.
+        - Карточки с ценами для торговых полок.
+
+        Для косметологического направления: дизайн памятки после процедуры и чек-листов домашнего ухода. Чтобы рекомендации оставались у клиентки под рукой после визита.
+      en: |-
+        For the space and the retail area:
+        - A sign that meets the residential complex's requirements.
+        - An opening-hours plate.
+        - Branded shopping bags and cups.
+        - Price cards for the shelves.
+
+        For the beauty treatments: an aftercare leaflet and home-care checklists, so clients keep the recommendations at hand after their visit.
+  - title:
+      ru: Добавила повод поделиться впечатлением
+      en: Gave guests a reason to share
+    text:
+      ru: Разработала открытки с предсказаниями под стирающимся слоем. Небольшой интерактив дополнил покупку приятным сюрпризом — гостьи делились открытками в сторис и упоминали бутик.
+      en: I designed scratch-off fortune cards. This small interactive touch turned a purchase into a pleasant surprise — guests shared the cards in their stories and tagged the boutique.
+  - title:
+      ru: Помогла довести дизайн до производства
+      en: Took the design all the way to production
+    text:
+      ru: |-
+        Взяла на себя сопровождение производства пакетов:
+        - Подбирала типографии.
+        - Сравнивала стоимость и сроки.
+        - Согласовывала детали с менеджерами.
+
+        Заказчице оставалось выбирать и утверждать решения. Также помогла найти подрядчика для изготовления и монтажа таблички на дверь.
+      en: |-
+        I handled production of the shopping bags:
+        - Shortlisted print shops.
+        - Compared prices and lead times.
+        - Agreed the details with their managers.
+
+        The client only had to choose and approve. I also helped find a contractor to make and install the door plate.
+  - title:
+      ru: Сохранила задумку открыток в рамках бюджета
+      en: Kept the card idea within budget
+    text:
+      ru: |-
+        Печать открыток со стирающимся слоем оказалась дороже запланированного. Предложила заказать готовые скретч-наклейки отдельно и нанести их вручную.
+
+        Так сохранили интерактив и сократили расходы на изготовление.
+      en: |-
+        Printing the scratch-off cards turned out more expensive than planned. I suggested ordering ready-made scratch stickers separately and applying them by hand.
+
+        That kept the interactive touch and cut production costs.
+result:
+  ru: |-
+    К открытию у My Lux были:
+    - Единый визуальный стиль.
+    - Комплект материалов для торговли, косметологических услуг и сервиса.
+    - Решения по производству, подобранные под сроки и бюджет запуска.
+
+    Заказчица получила поддержку от разработки стиля до работы с подрядчиками.
+  en: |-
+    By opening day My Lux had:
+    - A unified visual identity.
+    - A full set of materials for retail, beauty treatments and service.
+    - Production solutions tailored to the launch timeline and budget.
+
+    The client got support from developing the identity all the way to working with contractors.
+done: []
 duration:
   ru: 3 недели
   en: 3 weeks
-priceUsd: 320
-priceRub: 29500
+scope:
+  - title:
+      ru: Фирменный стиль
+      en: Brand identity
+    items:
+      ru: |-
+        логотип
+        подбор цветовой палитры
+        подбор шрифтов и типографических приёмов
+        графические приёмы
+      en: |-
+        logo
+        colour palette
+        typefaces and typographic devices
+        graphic devices
+  - title:
+      ru: 8 носителей + сопровождение производства
+      en: 8 brand applications + production support
+    items:
+      ru: сопровождение производства оплачивается отдельно, стоимость зависит от тиража
+      en: production support is billed separately; the price depends on the print run
+priceUsd: 870
+priceRub: 70000

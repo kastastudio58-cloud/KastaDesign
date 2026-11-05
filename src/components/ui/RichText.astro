@@ -1,0 +1,49 @@
+---
+import { typo } from '../../lib/content';
+
+interface Props {
+  paras: string[];
+  class?: string;
+}
+
+// Строки абзаца с «- » в начале складываются в список
+const { paras, class: className = 'text' } = Astro.props;
+
+type Block = { list: false; text: string } | { list: true; items: string[] };
+
+const blocks: Block[] = [];
+for (const para of paras) {
+  let prose: string[] = [];
+  let items: string[] = [];
+  const flush = () => {
+    if (prose.length) blocks.push({ list: false, text: prose.join(' ') });
+    if (items.length) blocks.push({ list: true, items });
+    prose = [];
+    items = [];
+  };
+  for (const raw of para.split('\n')) {
+    const line = raw.trim();
+    if (!line) continue;
+    const item = line.match(/^[-–—•]\s+(.*)$/);
+    if (item) {
+      if (prose.length) flush();
+      items.push(item[1]);
+    } else {
+      if (items.length) flush();
+      prose.push(line);
+    }
+  }
+  flush();
+}
+---
+{
+  blocks.map((b) =>
+    b.list ? (
+      <ul class="project__list">
+        {b.items.map((x) => <li class="text">{typo(x)}</li>)}
+      </ul>
+    ) : (
+      <p class={className}>{typo(b.text)}</p>
+    )
+  )
+}

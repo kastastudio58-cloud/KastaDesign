@@ -11,7 +11,7 @@
 .gallery {
   position: sticky;
   top: calc(var(--header-h) + var(--section-y));
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 16 / 9;
   max-height: calc(100svh - var(--header-h) - 2 * var(--section-y));
   width: 100%;
   border-radius: var(--radius-m);
@@ -64,41 +64,19 @@
   pointer-events: none;
 }
 
-.gallery__nav .icon-button {
+/* Стрелки лежат на фото: светлая обводка без заливки, тень — чтобы читались на светлых кадрах */
+.gallery__arrow {
   pointer-events: auto;
-  box-shadow: 0 4px 16px rgba(51, 34, 30, 0.12);
+  color: var(--c-light);
+  box-shadow: inset 0 0 0 1.5px var(--c-light);
+  filter: drop-shadow(0 1px 6px rgba(51, 34, 30, 0.35));
 }
 
-.gallery__pagination {
-  position: absolute;
-  left: 50%;
-  bottom: clamp(12px, 1.25vw, 24px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 14px;
-  transform: translateX(-50%);
-  background: rgba(246, 245, 241, 0.85);
-  border-radius: 100px;
-  backdrop-filter: blur(6px);
-}
-
-.gallery__dots {
-  display: flex;
-  gap: 8px;
-}
-
-.gallery__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(51, 34, 30, 0.25);
-  transition: background-color 0.25s var(--ease);
-}
-
-.gallery__dot.is-active {
-  background: var(--c-blue);
+@media (hover: hover) {
+  .gallery__arrow:hover {
+    background: var(--c-light);
+    color: var(--c-brown);
+  }
 }
 
 .project__info {
@@ -145,12 +123,12 @@
   gap: 8px;
 }
 
-.project__list li {
+.project__list > li {
   position: relative;
   padding-left: 20px;
 }
 
-.project__list li::before {
+.project__list > li::before {
   content: '';
   position: absolute;
   left: 0;
@@ -159,6 +137,37 @@
   height: 8px;
   border-radius: 50%;
   background: var(--c-blue);
+}
+
+.project__sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  color: var(--c-brown-60);
+}
+
+.project__sublist li::before {
+  content: '—';
+  margin-right: 8px;
+}
+
+.project__steps {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 1.25vw, 24px);
+}
+
+.project__step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project__price-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .project__price {
@@ -219,18 +228,11 @@
   .gallery {
     position: relative;
     top: 0;
-    aspect-ratio: 4 / 3;
     max-height: none;
   }
 
   .project__info {
     max-width: 760px;
-  }
-}
-
-@media (max-width: 600px) {
-  .gallery {
-    aspect-ratio: 1 / 1;
   }
 }
 

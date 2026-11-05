@@ -15,7 +15,11 @@ function initSlider(root: HTMLElement) {
 
   const max = () => track.scrollWidth - track.clientWidth;
   const startOffset = () => parseFloat(getComputedStyle(track).paddingLeft) || 0;
-  const positions = () => slides().map((s) => Math.min(Math.max(s.offsetLeft - startOffset(), 0), max()));
+  // Позиция карточки внутри ленты (offsetLeft считается от страницы, а не от ленты — с ним лента уезжала на ширину отступа)
+  const positions = () => {
+    const base = track.getBoundingClientRect().left - track.scrollLeft + startOffset();
+    return slides().map((s) => Math.min(Math.max(s.getBoundingClientRect().left - base, 0), max()));
+  };
 
   const update = () => {
     const static_ = max() <= 2;
