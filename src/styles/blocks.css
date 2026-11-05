@@ -417,6 +417,16 @@
   padding: var(--card-pad);
 }
 
+/* Заглушка «проект скоро появится» — пока у проекта нет фото в галерее */
+.work-card--soon {
+  justify-content: center;
+  align-items: center;
+  min-height: clamp(360px, 25vw, 520px);
+  text-align: center;
+  color: var(--c-light);
+  background: var(--c-blue);
+}
+
 .work-card__image {
   aspect-ratio: 534 / 320;
   border-radius: var(--radius-s);

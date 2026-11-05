@@ -63,5 +63,9 @@ export async function getArticles() {
   return (await reader.collections.articles.all()).sort(byOrder);
 }
 
+/** Проект готов к показу, когда в галерее есть хотя бы одно фото. Иначе — заглушка «скоро» */
+export const isProjectReady = (entry: { gallery?: readonly { image?: string | null }[] | null }) =>
+  (entry.gallery ?? []).some((g) => g.image);
+
 export const projectTitle = (entry: { title: string; titleEn: string }, lang: Lang) =>
   lang === 'en' && entry.titleEn ? entry.titleEn : entry.title;

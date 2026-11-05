@@ -3,7 +3,7 @@ import AccentTitle from '../ui/AccentTitle.astro';
 import Button from '../ui/Button.astro';
 import Media from '../ui/Media.astro';
 import SliderControls from '../ui/SliderControls.astro';
-import { tr, typo, projectTitle, type Lang } from '../../lib/content';
+import { tr, typo, projectTitle, isProjectReady, type Lang } from '../../lib/content';
 import { useUi, localePath, sectionIds } from '../../i18n/ui';
 
 interface Props {
@@ -48,7 +48,11 @@ const projectHref = (slug: string) => localePath(lang, `/projects/${slug}/`);
           <div class="works" id="works" hidden data-works data-slider>
             <p class="h5 works__label">{t.moreWorksLabel}</p>
             <ul class="works__grid" data-slider-track>
-              {works.map(({ slug, entry }) => (
+              {works.map(({ slug, entry }) => !isProjectReady(entry) ? (
+                <li class="work-card work-card--soon outline-card" data-slide>
+                  <p class="h4">{t.projectSoon}</p>
+                </li>
+              ) : (
                 <li class="work-card outline-card" data-slide>
                   <h3 class="h3 work-card__title">{projectTitle(entry, lang)}</h3>
                   <Media src={entry.cover} alt={projectTitle(entry, lang)} lang={lang} class="work-card__image" />

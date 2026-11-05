@@ -4,7 +4,7 @@ import Button from './ui/Button.astro';
 import Media from './ui/Media.astro';
 import Icon from './ui/Icon.astro';
 import RichText from './ui/RichText.astro';
-import { tr, typo, formatNumber, projectTitle, getProjects, type Lang } from '../lib/content';
+import { tr, typo, formatNumber, projectTitle, getProjects, isProjectReady, type Lang } from '../lib/content';
 import { useUi, localePath, sectionIds } from '../i18n/ui';
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
 
 const { lang, slug } = Astro.props;
 const t = useUi(lang);
-const projects = await getProjects();
+const projects = (await getProjects()).filter((x) => x.slug === slug || isProjectReady(x.entry));
 const current = projects.find((p) => p.slug === slug)!;
 const p = current.entry;
 const title = projectTitle(p, lang);

@@ -11,7 +11,12 @@ interface Props {
 
 const { lang, content, services } = Astro.props;
 const t = useUi(lang);
-const usd = (n: number) => (lang === 'ru' ? `${t.from} ${formatNumber(n)} $` : `${t.from} $${n.toLocaleString('en-US')}`);
+const usd = (n: number, monthly = false) => {
+  const amount = lang === 'ru' ? `${formatNumber(n)} $` : `$${n.toLocaleString('en-US')}`;
+  return monthly ? `${amount} / ${t.perMonth}` : `${t.from} ${amount}`;
+};
+const rub = (n: number, monthly = false) =>
+  monthly ? `${formatNumber(n)} ₽ / ${t.perMonth}` : `${t.from} ${formatNumber(n)} ₽`;
 ---
 <section class="section services" id={sectionIds.services}>
   <div class="container">
@@ -29,9 +34,9 @@ const usd = (n: number) => (lang === 'ru' ? `${t.from} ${formatNumber(n)} $` : 
             <p class="h4 service-row__name" role="cell">{typo(lang === 'en' && entry.nameEn ? entry.nameEn : entry.name)}</p>
             <p class="text service-row__text" role="cell">{typo(tr(entry.description, lang))}</p>
             <div class="service-row__price" role="cell">
-              {entry.priceUsd != null && <span class="service-row__usd">{usd(entry.priceUsd)}</span>}
+              {entry.priceUsd != null && <span class="service-row__usd">{usd(entry.priceUsd, entry.monthly)}</span>}
               {lang === 'ru' && entry.priceRub != null && (
-                <span class="text-s service-row__rub">{`${t.from} ${formatNumber(entry.priceRub)} ₽`}</span>
+                <span class="text-s service-row__rub">{rub(entry.priceRub, entry.monthly)}</span>
               )}
             </div>
           </div>

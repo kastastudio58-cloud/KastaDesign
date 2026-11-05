@@ -71,7 +71,7 @@ export default config({
             image: img('Фото', 'projects', 'Формат 16:9 — 1920×1080 или 1176×661'),
             alt: t('Описание фото (для поисковиков и незрячих)'),
           }),
-          { label: 'Галерея на странице проекта', description: 'Сколько угодно фото, порядок можно менять перетаскиванием', itemLabel: (p) => p.fields.alt.fields.ru.value || 'Фото' }
+          { label: 'Галерея на странице проекта', description: 'Сколько угодно фото, порядок можно менять перетаскиванием. Пока галерея пустая, в сетке работ проект показывается заглушкой «проект скоро появится» и не открывается', itemLabel: (p) => p.fields.alt.fields.ru.value || 'Фото' }
         ),
         intro: t('Вводный абзац под названием', { multiline: true, description: 'Пара предложений о проекте' }),
         task: t('Задача', { multiline: true, description: 'Абзацы разделяйте пустой строкой. Строки, начинающиеся с «- », станут списком; **так** — жирный' }),
@@ -121,6 +121,7 @@ export default config({
         description: t('Описание', { multiline: true }),
         priceUsd: fields.integer({ label: 'Цена от, $' }),
         priceRub: fields.integer({ label: 'Цена от, ₽', description: 'Показывается только в русской версии' }),
+        monthly: fields.checkbox({ label: 'Помесячная оплата', description: 'Цена без «от», с припиской «/ мес.»', defaultValue: false }),
         order: fields.integer({ label: 'Порядок', defaultValue: 10 }),
       },
     }),

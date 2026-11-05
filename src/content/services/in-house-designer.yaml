@@ -1,0 +1,9 @@
+name: Штатный дизайнер
+nameEn: In-house designer
+description:
+  ru: Постоянная работа над дизайн-задачами твоего бренда. Сотрудничество от 1 месяца вместо разовых заказов
+  en: Ongoing work on your brand's design tasks. A partnership from 1 month instead of one-off orders
+priceUsd: 550
+priceRub: 45000
+monthly: true
+order: 3
