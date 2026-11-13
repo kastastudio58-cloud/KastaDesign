@@ -32,7 +32,7 @@ const [home, settings, projects, services, reviews, articles] = await Promise.al
   <Process lang={lang} content={home.process} />
   <About lang={lang} content={home.about} />
   <Reviews lang={lang} content={home.reviews} reviews={reviews} />
-  <Community lang={lang} content={home.community} />
+  {home.community.show && <Community lang={lang} content={home.community} />}
   <Articles lang={lang} content={home.articles} articles={articles} />
   <Contacts lang={lang} content={home.contacts} settings={settings} />
 </Base>

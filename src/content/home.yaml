@@ -102,6 +102,7 @@ reviews:
     ru: Отзывы
     en: Reviews
 community:
+  show: false
   title:
     ru: Комьюнити womenboss
     en: The womenboss community

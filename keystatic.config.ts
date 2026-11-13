@@ -215,6 +215,11 @@ export default config({
         reviews: fields.object({ title: t('Заголовок') }, { label: 'Блок «Отзывы»' }),
         community: fields.object(
           {
+            show: fields.checkbox({
+              label: 'Показывать блок на сайте',
+              description: 'Пока выключено — блока нет ни в русской, ни в английской версии. Тексты ниже сохраняются.',
+              defaultValue: false,
+            }),
             title: t('Заголовок'),
             subtitle: t('Подзаголовок'),
             text: t('Текст в большой карточке', { multiline: true }),

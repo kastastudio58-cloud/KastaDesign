@@ -21,6 +21,11 @@ const links = [
   { href: `${home}#${sectionIds.articles}`, label: t.nav.articles },
 ];
 const contactsHref = `${home}#${sectionIds.contacts}`;
+// Переключатель «RU | EN» — в шапке на планшете и телефоне, рядом с бургером
+const langs = [
+  { code: 'ru', label: 'RU', name: 'Русская версия' },
+  { code: 'en', label: 'EN', name: 'English version' },
+];
 ---
 <header class="header" data-header>
   <div class="container header__inner">
@@ -33,6 +38,18 @@ const contactsHref = `${home}#${sectionIds.contacts}`;
     <div class="header__actions">
       <a class="header__lang" href={altHref} hreflang={lang === 'ru' ? 'en' : 'ru'} aria-label={t.langSwitchLabel}>{t.langSwitch}</a>
       <Button href={contactsHref} variant="dark" class="header__button">{t.headerCta}</Button>
+      <div class="header__langs">
+        {langs.map((l, i) => (
+          <>
+            {i > 0 && <span class="header__langs-sep" aria-hidden="true">|</span>}
+            {l.code === lang ? (
+              <span class="header__langs-item is-active" aria-current="true">{l.label}</span>
+            ) : (
+              <a class="header__langs-item" href={altHref} hreflang={l.code} lang={l.code} aria-label={l.name}>{l.label}</a>
+            )}
+          </>
+        ))}
+      </div>
       <button
         class="header__burger"
         type="button"
@@ -55,7 +72,6 @@ const contactsHref = `${home}#${sectionIds.contacts}`;
   </nav>
   <div class="menu__footer">
     <Button href={contactsHref} variant="dark" data-menu-link>{t.headerCta}</Button>
-    <a class="menu__lang" href={altHref} hreflang={lang === 'ru' ? 'en' : 'ru'}>{t.langSwitchLabel}</a>
   </div>
 </div>
 
